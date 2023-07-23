@@ -1,0 +1,100 @@
+<%- include('header') %>
+
+
+<div class="watched-ent-head">
+    <h1 class="watched-ent-head-h1">Your Watch History</h1>
+    <p class="watched-ent-head-desc">Eveything you have watched in one place.</p>
+</div>
+
+<div class="add-new-watched-ent">
+    <div class="new-watched-ent-form-head">
+        <h2>Add a new entertainment : </h2>
+    </div>
+    <form class="new-watched-ent-form" action="/watchedList" method="post">
+        <input class="new-watched-ent-name" type="text" placeholder="Name" name="watchedEntName" autocomplete="off"
+            required>
+        <input class="new-watched-ent-desc" type="text" placeholder="Season/Part" name="info" autocomplete="off">
+        <input class="new-watched-ent-date" type="date" name="dateOfWatch">
+        <button type="submit" class="new-watched-ent-submit-btn">Submit</button>
+    </form>
+</div>
+
+<!-- Main Content -->
+<div class="table-watch-history">
+    <table>
+        <thead>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Additional Information</th>
+            <th>Date of Watch</th>
+            <th>Options</th>
+        </thead>
+        <tbody>
+            <% watchedList.slice().reverse().forEach(function(element){ %>
+            <tr>
+                <td data-label="Number">
+                    <%=watchedList.indexOf(element) + 1%>
+                </td>
+                <td data-label="Name">
+                    <%=element.name%>
+                </td>
+                <td class="additional-info" data-label="Additional Information">
+                    <%=element.additionalInfo%>
+                </td>
+                <td class="date-of-watch" data-label="Date of Watch">
+                    <%=element.dateOfWatch%>
+                </td>
+                <td data-label="" class="buttons-row">
+                    <button class="edit-btn" data-bs-toggle="modal"
+                        data-bs-target="#Modal<%=watchedList.indexOf(element) + 1%>" +>Edit</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="Modal<%=watchedList.indexOf(element) + 1%>" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Edit</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="form<%=watchedList.indexOf(element) + 1%>" class="new-watched-ent-form"
+                                        action="/update-watch-history" method="post">
+                                        <input type="hidden" value="<%=element.name%>" name="originalName">
+                                        <input value="<%=element.name%>" class="new-watched-ent-name" type="text"
+                                            placeholder="Name" name="watchedEntName" autocomplete="off" required>
+                                        <input value="<%=element.additionalInfo%>" class="new-watched-ent-desc"
+                                            type="text" placeholder="Season/Part" name="info" autocomplete="off">
+                                        <input value="<%=element.dateOfWatch%>" class="new-watched-ent-date" type="date"
+                                            name="dateOfWatch">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-outline-dark"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button id="<%=watchedList.indexOf(element) + 1%>" type="button"
+                                        class="btn btn-sm btn-dark save-changes-btn">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="/delete-watched-ent" method="post">
+                        <input type="hidden" name="watchedEntToDelete" value="<%=element.name%>">
+                        <button class="delete-watched-ent-btn" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Send Request to Edit watched Entertainment
+    $('.save-changes-btn').on('click', function (e) {
+        e.preventDefault();
+        $("#form" + this.id).submit();
+    })
+</script>
+
+<%- include('footer') %>

@@ -1,0 +1,28 @@
+<%- include('header', {signedInflag: signedInflag}) %>
+
+    <div class="container-signin">
+        <form class="sign-in-form" action="/login" method="post">
+            <h2 class="sign-in-heading"><i class="fa-solid fa-lock"></i></h2>
+            <div class="form-inputs">
+                <div class="username-field">
+                    <input class="sign-in-input username-input" type="text" placeholder="Username" name="username"
+                        autocomplete="off" required><br>
+                </div>
+                <div class="password-field">
+                    <input class="sign-in-input password-input" type="password" placeholder="Password" name="password"
+                        autocomplete="off" required><br>
+                    <p style="color: white; text-align: center; color: red;">
+                        <%= wrongPassword %>
+                    </p>
+                </div>
+                <!-- <hr class="sign-in-btn-separation"> -->
+                <button type="submit" class="sign-in-submit-btn">Sign In</button>
+            </div>
+            <div class="create-new-account">
+                <a href="/register">Create a new account</a>
+            </div>
+        </form>
+    </div>
+
+
+    <%- include('footer') %>

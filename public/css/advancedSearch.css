@@ -1,0 +1,142 @@
+.filter-displayer {
+    margin: 3% 15% 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 576px) {
+    .filter-displayer {
+        margin: 10% 5% 1%;
+    }
+
+    .filter-displayer h2 {
+        font-size: 1.2rem;
+    }
+}
+
+.filter-displayer h2 {
+    color: white;
+    margin: 0;
+}
+
+.offcanvas-toggler {
+    width: fit-content;
+}
+
+@media (max-width: 576px) {
+    .offcanvas-toggler {
+        font-size: 0.6rem;
+    }
+}
+
+.nav-body {
+    margin-left: auto;
+}
+
+@media (max-width: 991px) {
+    .nav-body {
+        margin-left: 0;
+    }
+}
+
+.separation {
+    margin: 1% 15%;
+}
+
+@media (max-width: 576px) {
+    .separation {
+        margin: 1% 5%;
+    }
+}
+
+.name-input {
+    width: 100%;
+    padding: 5px;
+    background: transparent;
+    color: rgb(177, 177, 177);
+    border: none;
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+
+.name-input:focus {
+    outline: none;
+}
+
+.selects {
+    margin: 8% 0;
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    column-gap: 5px;
+}
+
+select {
+    padding: 5px;
+    font-size: 0.8rem;
+    background: transparent;
+    color: rgb(215, 215, 215);
+}
+
+select>option {
+    color: black;
+}
+
+#sort-input {
+    width: 100%;
+    margin-bottom: 8%;
+}
+
+.genres-selecter {
+    margin: 8% 0;
+}
+
+.genres-selecter hr {
+    margin: 1% 0 5%;
+}
+
+.genre-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+.checkbox-label-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-label-container>input {
+    margin-right: 10px;
+    accent-color: rgb(150, 150, 150);
+}
+
+.checkbox-label-container>label {
+    font-size: 0.8rem;
+    color: rgb(150, 150, 150);
+}
+
+.year-season-btn,
+.seach-filtered-animes {
+    width: 100%;
+    font-size: 0.8rem;
+    border-color: rgb(150, 150, 150);
+}
+
+/* Year Season Filter */
+.year-season-filter-form {
+    margin: 4% 0 8%;
+}
+
+.year-season-filter-container {
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    column-gap: 5px;
+}
+
+.year-season-btn {
+    width: 100%;
+    margin: 2% 0;
+}
+
+.all-entees {
+    margin-top: 4%;
+}

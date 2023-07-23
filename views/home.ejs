@@ -1,0 +1,304 @@
+<%- include('header', {signedInflag: signedInflag, userName: username}); -%>
+
+<div class="container-fluid start">
+
+    <div class="row">
+        <div class="title-h1">
+            <h1>Discover, Track and Review Animes</h1>
+        </div>
+        <div class="buttons">
+            <a href="#popular-entertainment"><button type="button" class="btn  btn-outline-dark nav-button">Top
+                    Animes</button></a><br>
+            <a href="#ongoing-ents"><button type="button" class="btn  btn-outline-dark nav-button">Ongoing
+                    Animes</button></a><br>
+            <a href="#upcoming-ents"><button type="button" class="btn  btn-outline-dark nav-button">Upcoming
+                    Animes</button></a><br>
+            <a href="/advanced-search"><button type="button" class="btn  btn-outline-dark nav-button">Discover
+                    Animes</button></a>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- Entertainment Recommendations -->
+
+<section id="popular-entertainment">
+
+    <div class="pop-ent-head">
+        <div class="head-flex">
+            <h2 class="h2-popular">Top Animes</h2>
+            <a href="/top">See more</a>
+        </div>
+        <hr>
+    </div>
+
+    <!-- <div class="popular-ents row">
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/aot_poster.jpg" alt="aot-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">Attack on Titan</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/tenet.jpg" alt="tenet-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">Tenet</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/death-note.jpg" alt="takagi-san-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">Death Note</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/dark-knight.jpg" alt="dark-knight-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">The Dark Knight</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/interstellar.jpg" alt="demon-slayer-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">Interstellar</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/vinland.jpg" alt="vinland-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">Vinland Saga</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/91-Days.png" alt="your-name-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">91 Days</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-2 col-md-3 col-sm-4 clickThisDiv">
+                <form class="recommended-ent" action="/" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/daredevil.jpg" alt="daredevil-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">Daredevil</p>
+                    </div>
+                </form>
+            </div>
+
+        </div> -->
+    <div id="slider">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper wrapper-top-animes">
+                <!-- <div class="swiper-slide">
+                        <div class="clickThisDiv">
+                            <form class="recommended-ent" action="/" method="post">
+                                <input type="hidden" class="hiddenSearchName" name="search" value="">
+                                <a type="submit"><img class="popular-anime" src="images/aot_poster.jpg" alt="aot-img"></a>
+                            </form>
+                            <div class="ent-about">
+                                <p class="pop-ent-desc">Attack on Titan</p>
+                            </div>
+                        </div>
+                    </div> -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<section id="ongoing-ents">
+
+    <div class="pop-ent-head">
+        <div class="head-flex">
+            <h2 class="h2-popular">Ongoing Animes</h2>
+            <a href="/ongoing">See more</a>
+        </div>
+        <hr>
+    </div>
+
+    <div id="slider">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper wrapper-ongoing-animes">
+                <!-- <div class="swiper-slide">
+                        <div class="clickThisDiv">
+                            <form class="recommended-ent" action="/" method="post">
+                                <input type="hidden" class="hiddenSearchName" name="search" value="">
+                                <a type="submit"><img class="popular-anime" src="images/aot_poster.jpg" alt="aot-img"></a>
+                            </form>
+                            <div class="ent-about">
+                                <p class="pop-ent-desc">Attack on Titan</p>
+                            </div>
+                        </div>
+                    </div> -->
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<section id="upcoming-ents">
+    <div class="pop-ent-head">
+        <div class="head-flex">
+            <h2 class="h2-popular">Upcoming Animes</h2>
+            <a href="/upcoming">See more</a>
+        </div>
+        <hr>
+    </div>
+    <div id="slider">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper wrapper-upcoming-animes">
+
+                <!-- <div class="swiper-slide">
+                        <div class="clickThisDiv">
+                            <form class="recommended-ent" action="/" method="post">
+                                <input type="hidden" class="hiddenSearchName" name="search" value="">
+                                <a type="submit"><img class="popular-anime" src="images/aot_poster.jpg" alt="aot-img"></a>
+                            </form>
+                            <div class="ent-about">
+                                <p class="pop-ent-desc">Attack on Titan</p>
+                            </div>
+                        </div>
+                    </div> -->
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<section id="most-reviewed">
+    <div class="pop-ent-head">
+        <div class="head-flex">
+            <h2 class="h2-popular">Reviewed Animes</h2>
+        </div>
+        <hr>
+    </div>
+    <div id="slider">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper wrapper-reviewed-animes">
+
+                <!-- <div class="swiper-slide">
+                        <div class="clickThisDiv">
+                            <form class="recommended-ent" action="/" method="post">
+                                <input type="hidden" class="hiddenSearchName" name="search" value="">
+                                <a type="submit"><img class="popular-anime" src="images/aot_poster.jpg" alt="aot-img"></a>
+                            </form>
+                            <div class="ent-about">
+                                <p class="pop-ent-desc">Attack on Titan</p>
+                            </div>
+                        </div>
+                    </div> -->
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
+
+<hr class="separation">
+
+<!-- Watchlist  -->
+
+<section id="watchlist">
+
+    <h2 class="h2-watchlist">From your Watchlist</h2>
+    <p class="watchlist-description">Save shows and movies to keep track of what you want to watch.</p>
+    <% if(signedInflag.isAuthenticated) { %>
+    <button onclick="location.href='/watchlist'" type="button" class="btn btn-outline-light">Your
+        Watchlist</button><br>
+    <% } else { %>
+    <button onclick="location.href='/login'" type="button" class="btn btn-outline-light">Log in to
+        Cinemy</button><br>
+    <% } %>
+</section>
+
+<!-- <hr class="separation"> -->
+
+<!-- About Section  -->
+<!-- new page added for about section  -->
+
+<!-- Footer -->
+
+<!-- <hr class="separation"> -->
+
+<script src="js/index.js"></script>
+
+<%- include('footer'); -%>
+
+<script>
+    $(window).resize(function () {
+        changeSlidesPerView();
+    })
+
+    let slidesPerView = 0;
+
+    function changeSlidesPerView() {
+        if ($(window).width() > 991) {
+            slidesPerView = 6;
+        }
+        if ($(window).width() < 991) {
+            slidesPerView = 5;
+        }
+        if ($(window).width() < 676) {
+            slidesPerView = 4;
+        }
+        if ($(window).width() < 476) {
+            slidesPerView = 3;
+        }
+        if ($(window).width() < 376) {
+            slidesPerView = 2;
+        }
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: slidesPerView,
+            spaceBetween: 0,
+            freeMode: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            }
+        });
+    }
+    changeSlidesPerView();
+
+</script>
+
+</body>
+
+</html>

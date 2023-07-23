@@ -1,0 +1,147 @@
+<%- include('header', {signedInflag: signedInflag}); -%>
+
+<div class="full-in-flex">
+    <div class="add-to-watchlist">
+        <% if(!existsInWatchlist) { %>
+        <form class="hidden-data-form" action="/watchlist" method="post">
+            <input class="poster-hidden" type="hidden" name="poster" value="<%=poster%>">
+            <input class="name-hidden" type="hidden" name="name" value="<%=englishTitle%>">
+            <input class="mal-id-hidden" type="hidden" name="mal_id" value="<%=malId%>">
+        </form>
+        <div>+ Add to Watchlist</div>
+        <% } else { %>
+        <div>Watchlist ✔</div>
+        <% } %>
+    </div>
+    <div class="entertainment">
+        <div class="poster">
+            <img class="poster-img" src="<%=poster%>" alt="poster">
+        </div>
+        <div class="ent-details">
+            <div class="ent-details-header">
+                <h1 class="title"><%=title%></h1>
+                <p class="ent-type">(<%=type%>)</p>
+            </div>
+            <div class="details">
+                <ul class="details-list">
+                    <li class="details-item">Duration : <%=runtime%></li>
+                    |
+                    <li class="details-item-3rd">Total Episodes : <%=totalEpisodes%></li>
+                </ul>
+            </div>
+            <hr>
+            <div class="alternate-title">English Title : <%=englishTitle%></div>
+            <hr>
+            <% if (status === "Not yet aired") { %>
+            <p class="not-aired">This anime has not been aired yet.</p>
+            <% } else { %>
+            <div class="ratings">
+                <p class="rating-item imdbRating">Rating: <%=score%></p>
+                <p class="rating-item">Rank: <%=rank%></p>
+                <p class="rating-item">Scored by <%=parseInt(scored_by)%> people.</p>
+            </div>
+            <% } %>
+            <hr>
+            <div class="cast-details">
+                <p>Genres:
+                    <% genres.forEach((genre, index)=>{ %>
+                    <span class="genre-element"><%=genre.name%></span>
+                    <% }) %>
+                </p>
+                <p>Rating: <%=rating%></p>
+                <p class="studio">Studio: <%=studio%></p>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="see-watch-order-container">
+        <button id="toggle-watch-order-btn" class="btn btn-light btn-sm" data-bs-toggle="modal"
+            data-bs-target="#watch-order-modal">See Watch
+            Order</button>
+    </div>
+    <div class="plot">
+        <h3 class="plot-head">Storyline :</h3>
+        <p class="plot-desc"><%=plot%></p>
+    </div>
+    <div class="more-info">
+        <h3 class="plot-head">More Info :</h3>
+        <p class="season">Season : <%=season%></p>
+        <p class="airing-status">Status : <%=status%></p>
+        <p class="airing-dates">Aired : <%=release_date%></p>
+    </div>
+
+    <div class="similar-ents-btn-div">
+        <form class="similar-animes-form" action="" method="post">
+            <input type="hidden" name="name" value="<%=title%>">
+            <button class="btn btn-sm btn-outline-light similar-animes-btn">Similar Animes</button>
+        </form>
+    </div>
+
+    <div class="reviews">
+        <h3 class="plot-head">User Reviews : </h3>
+
+        <% if(Reviews.length!==0) { %>
+        <% Reviews.forEach(function(element) { %>
+        <div class="review">
+            <h4 class="review-head"><%=element.reviewHead%></h4>
+            <div class="star-rating">★ <%=element.rating%>/10</div>
+            <div class="by-name">By <%=element.username%></div>
+            <!-- 500 charecters limit -->
+            <p class="review-desc"><%=element.reviewDesc%></p>
+            <% if(element.username===username) { %>
+            <form class="delete-review-form" action="/delete-review" method="post">
+                <input type="hidden" name="entId" value="<%=malId%>">
+                <a class="delete-review" href="">Delete</a>
+            </form>
+            <% } %>
+        </div>
+        <% }) %>
+        <% } else { %>
+        <div style="color: white;font-size: 0.8rem;">Be the first one to add a Review</div>
+        <% } %>
+
+        <h3 class="new-review">Add a Review : </h3>
+        <form action="/add-review" method="post" class="new-review-form" onsubmit="return validateReview()">
+            <input class="nameForReview" type="hidden" name="entId" value="<%=malId%>">
+            <input type="hidden" name="entName" value="<%=title%>">
+            <input type="hidden" name="imageUrl" value="<%=poster%>">
+            <input class="new-review-rating" type="number" max="10" min="0" step="any" placeholder="Rate between 1-10"
+                name="reviewRating" required>
+            <input class="new-review-head" name="reviewHead" type="text" placeholder="Head" autocomplete="off" required
+                maxlength="70"><br>
+            <textarea class="new-review-desc" name="reviewDesc" id="" cols="30" rows="10" placeholder="Description"
+                autocomplete="off" required maxlength="500"></textarea>
+            <button class="submit-review-btn" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="watch-order-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog watch-order-dialog modal-dialog-centered">
+        <div class="modal-content watch-order-modal-content">
+            <div class="modal-header">
+                <h4>Watch Order</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body watch-order-modal-body">
+                <div class="watch-order">
+                    <!-- <div class="watch-order-item">
+                        <div class="item-name">${element.name}</div>
+                        <div class="item-info">${element.info}</div>
+                        <form action="/" method="post" class="search-watch-order-ent">
+                            <input type="hidden" name="mal_id" value="${new URL(element.url).pathname.split('/')[2]}">
+                        </form>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/searchedEnt.js"></script>
+
+<%- include('footer'); -%>
+
+</body>
+
+</html>

@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.watched-ent-head {
+    margin: 5% 15%;
+    color: #fff;
+    text-align: center;
+}
+
+.watched-ent-head-h1 {
+    font-size: 2.5rem;
+}
+
+.add-new-watched-ent {
+    margin: 0 15% 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.new-watched-ent-form-head {
+    color: white;
+    margin: auto;
+    width: 40%;
+}
+
+.new-watched-ent-form {
+    width: 60%;
+}
+
+.new-watched-ent-name {
+    background-color: white;
+    border-radius: 25px;
+    padding: 2% 3%;
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.new-watched-ent-desc {
+    background-color: white;
+    border-radius: 25px;
+    padding: 1% 3%;
+    width: 69%;
+}
+
+.new-watched-ent-date {
+    background-color: white;
+    border-radius: 25px;
+    padding: 1%;
+    padding-left: 2%;
+    color: #6c757d;
+    width: 29%;
+}
+
+.new-watched-ent-name:focus,
+.new-watched-ent-name:active,
+.new-watched-ent-desc:focus,
+.new-watched-ent-desc:active .new-watched-ent-date:active,
+.new-watched-ent-date:focus,
+.new-watched-ent-submit-btn:active {
+    outline: none;
+}
+
+.new-watched-ent-submit-btn {
+    background-color: white;
+    border: 1px solid #6c757d;
+    /* color: #6c757d; */
+    transition: 0.3s;
+    border-radius: 25px;
+    margin-top: 2%;
+    padding: 1%;
+    width: 100%;
+}
+
+.new-watched-ent-submit-btn:hover,
+.new-watched-ent-submit-btn:focus {
+    letter-spacing: 2px;
+}
+
+/* Table */
+
+.table-watch-history {
+    margin: 3% 15%;
+}
+
+table {
+    width: 100%;
+}
+
+table td,
+table th {
+    padding: 12px 15px;
+    /* border: 1px solid #595959; */
+    text-align: center;
+    color: white;
+}
+
+table th {
+    background-color: #fff;
+    color: #000;
+    font-weight: 100;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #323232;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #1e1e1e;
+}
+
+.buttons-row form {
+    width: fit-content;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.edit-btn,
+.delete-watched-ent-btn {
+    width: 80px;
+    padding: 2px 0;
+    margin: 5px 0;
+    background: transparent;
+    color: white;
+    border: 1px solid #fff;
+}
+
+.additional-info,
+.date-of-watch {
+    height: 3.5em;
+}
+
+.modal-body .new-watched-ent-form input {
+    border: 1px solid #1e1e1e;
+}
+
+#footer {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 1070px) {
+    table thead {
+        display: none;
+    }
+
+    table,
+    table tbody,
+    table tr,
+    table td {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+    }
+
+    table tbody tr td {
+        text-align: right;
+        position: relative;
+        border: 1px solid #6c757d;
+    }
+
+    table tbody tr td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 15px;
+    }
+
+    .buttons-row {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 824px) {
+    .add-new-watched-ent {
+        margin: 10% 15%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .new-watched-ent-form-head {
+        width: 100%;
+        text-align: center;
+        margin: auto;
+    }
+
+    .new-watched-ent-form {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    /* .new-watched-ent-name,
+    .new-watched-ent-desc,
+    .new-watched-ent-date,
+    .new-watched-ent-submit-btn {
+        font-size: 0.9rem;
+    } */
+
+    table tbody tr td {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .watched-ent-head,
+    .add-new-watched-ent,
+    .table-watch-history {
+        margin: 7% 5%;
+    }
+
+    .new-watched-ent-form-head h2 {
+        font-size: 1.2rem;
+    }
+
+    .new-watched-ent-form {
+        width: 100%;
+    }
+
+    /* .new-watched-ent-name,
+    .new-watched-ent-desc,
+    .new-watched-ent-date,
+    .new-watched-ent-submit-btn {
+        font-size: 0.8rem;
+    } */
+
+    table tbody tr td {
+        font-size: 0.8rem;
+        padding-left: 10px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+
+    .new-watched-ent-form-head h2 {
+        font-size: 1rem;
+    }
+
+    /* .new-watched-ent-name,
+    .new-watched-ent-desc,
+    .new-watched-ent-date,
+    .new-watched-ent-submit-btn {
+        font-size: 0.6rem;
+    } */
+
+    table tbody tr td {
+        font-size: 0.6rem;
+        padding: 8px 5px;
+    }
+
+    table tbody tr td::before {
+        padding-left: 5px;
+    }
+}
+
+@media screen and (max-width: 313px) {
+    .new-watched-ent-desc {
+        width: 65%;
+    }
+
+    .new-watched-ent-date {
+        width: 32%;
+    }
+}

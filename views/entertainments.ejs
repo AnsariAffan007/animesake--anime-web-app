@@ -1,0 +1,48 @@
+<%- include('header', {signedInflag: signedInflag}); -%>
+
+<div class="all-entees">
+
+    <div class="pop-ent-head">
+        <h2 class="h2-popular">
+            <% if(name) { %>
+            <span>Animes Similar to <%=name%></span>
+            <% } else { %>
+            <span><%=type%> Animes</span>
+            <% } %>
+        </h2>
+        <hr>
+    </div>
+
+    <div class="popular-ents row">
+
+        <!-- <div class="col-lg-2 col-md-3 col-sm-6 clickThisDiv">
+                <form class="recommended-ent" action="/entertainments" method="post">
+                    <input type="hidden" class="hiddenSearchName" name="search" value="">
+                    <img class="popular-anime" src="images/tenet.jpg" alt="aot-img">
+                    <div class="ent-about">
+                        <p class="pop-ent-desc">Tenet</p>
+                    </div>
+                </form>
+            </div> -->
+
+    </div>
+</div>
+
+<div class="loader">
+    <img src="/images/loader.gif" alt="">
+</div>
+
+<div class="load-more" style="text-align: center;margin-bottom: 7%;">
+    <button class="load-more-btn" onclick="loadMore()">Load More</button>
+</div>
+
+<div class="end hide-end">
+    <p>You've reached the end of page.</p>
+</div>
+
+<script src="/js/animeDisplayer.js"></script>
+
+
+<hr class="separation">
+
+<%- include('footer'); -%>

@@ -1,0 +1,802 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* overflow-x: hidden; */
+    /* font-family: 'Roboto Mono', monospace; */
+    font-family: 'MetropolisRegular', monospace;
+    /* background-color: #1B262C; */
+    /* background-color: black; */
+    background-color: #1a1a1a;
+}
+
+h1 {
+    /* font-family: 'Montserrat-Black'; */
+    font-size: 3rem;
+    line-height: 1.5;
+    font-weight: 900;
+}
+
+h3 {
+    /* font-family: "montserrat-bold"; */
+    font-weight: 700;
+    margin-top: 8px;
+    /* color: #30E3CA; */
+}
+
+.separation {
+    /* width: 70%;
+    margin: auto;
+    border-style: none;
+    border-top-style: double;
+    border-width: 10px;
+    border-color: white; */
+    border: none;
+    border-bottom: 2px solid #fff;
+    /* width: 80%; */
+    margin: auto 5%;
+}
+
+.separation-single {
+    width: 70%;
+    margin: auto;
+    border-style: none;
+    border-top-style: solid;
+    border-width: 5px;
+    border-color: white;
+}
+
+#title {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title  */
+
+.start {
+    background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../images/aot-background\(2\).jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 85vh;
+}
+
+@media (max-width: 576px) {
+    .start {
+        background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../images/AOTbackground.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 90vh;
+        /* background-position-x: 75%; */
+    }
+}
+
+.container-fluid {
+    padding: 3% 15%;
+}
+
+.navbar {
+    max-height: 15vh;
+    padding: 2% 15%;
+    background-color: #000;
+    color: white;
+}
+
+.navbar-collapse {
+    resize: none;
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+    color: white;
+    font-family: 'MetropolisRegular';
+    font-weight: bold;
+    margin: 0;
+}
+
+.navbar-brand:hover {
+    color: white;
+}
+
+.spacing {
+    display: inline-block;
+    margin-left: 50px;
+    font-weight: normal;
+}
+
+.navbar-nav {
+    margin-left: 10px;
+}
+
+.nav-item {
+    padding: 0 1rem;
+}
+
+.nav-link {
+    position: relative;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    letter-spacing: 3px;
+    transition: 0.3s;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -3px;
+    background-color: #0d6efd;
+    transition: 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link:hover::after,
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
+    outline: none;
+    color: #0d6efd;
+}
+
+.search-box {
+    position: relative;
+    margin-right: 10px;
+}
+
+.nav-search {
+    border-radius: 15px;
+}
+
+.nav-search:focus {
+    -webkit-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+}
+
+.autocom-box {
+    background-color: white;
+    color: black;
+    max-width: 300px;
+    /* padding: 10px 8px; */
+    max-height: 280px;
+    overflow-y: auto;
+    border-radius: 5px;
+    /* opacity: 0; */
+    /* pointer-events: none; */
+    position: absolute;
+    z-index: 1;
+}
+
+.search-box li {
+    list-style: none;
+    padding: 8px 12px;
+    padding-left: 0;
+    cursor: default;
+    border-radius: 3px;
+    /* width: 100%; */
+    font-size: 0.7rem;
+    display: flex;
+    overflow: auto;
+}
+
+.search-box li:hover {
+    background-color: #efefef;
+}
+
+.search-box li .suggested-anime-img {
+    width: 50px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.search-box li div {
+    margin: auto 0;
+}
+
+.search-btn {
+    height: 38px;
+    width: 38px;
+    line-height: 38px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+    color: black;
+    margin-right: 10px;
+    border: none;
+    background: none;
+}
+
+.profile {
+    display: flex;
+    height: 2.2rem;
+    margin: auto 0;
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+    padding: 0 1%;
+}
+
+.username {
+    margin: auto 2px;
+}
+
+.profile .btn {
+    padding: 0;
+    background-color: white;
+    color: black;
+    border: none;
+    margin: auto 2px;
+}
+
+.profile .btn:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.profile-pic {
+    height: 2.2rem;
+    border-radius: 50%;
+}
+
+.dropdown-menu {
+    border-radius: 15px;
+}
+
+.dropdown-menu .dropdown-item:active {
+    background-color: #e9ecef;
+    color: black;
+}
+
+.offcanvas.nav-offcanvas {
+    --bs-offcanvas-width: 280px;
+}
+
+.nav-sign-in {
+    background-color: white;
+    border: none;
+    margin: auto 0;
+    color: black;
+    height: 2.2rem;
+    min-width: 5rem;
+    border-radius: 15px;
+}
+
+.nav-sign-in a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-button {
+    margin-bottom: 38px;
+    --bs-btn-focus-shadow-rgb: none !important;
+}
+
+.nav-button:active,
+.nav-button:focus {
+    outline: none;
+    border-style: outset;
+}
+
+.nav-button:active:before,
+.nav-button:focus:before {
+    box-shadow: none;
+}
+
+.title-h1 {
+    color: #141b29;
+}
+
+.buttons {
+    padding: 10vh 0;
+}
+
+
+
+/* Entertainment Recommendations */
+
+#popular-entertainment {
+    padding: 7% 15% 2%;
+}
+
+.head-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h2-popular {
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.pop-ent-head hr {
+    border: none;
+    border-bottom: 2px solid #fff;
+}
+
+.recommendations-link {
+    /* align-self: flex-end; */
+    float: right;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #34B3F1;
+}
+
+.recommendations-link:hover {
+    color: #34B3F1;
+    text-decoration: underline;
+}
+
+/* .h3-popular {
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 5%;
+} */
+
+.recommended-ent {
+    transition: 0.3s;
+}
+
+.recommended-ent:hover {
+    cursor: pointer;
+    transform: translate(0, -5px);
+}
+
+.clickThisDiv {
+    display: inline-block;
+    /* width: 150px; */
+    /* margin: 0 11px 0; */
+}
+
+.popular-anime {
+    width: 100%;
+    height: 250px;
+    /* margin-bottom: 2%; */
+}
+
+.ent-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #262625;
+    height: 50px;
+    color: white;
+    font-size: 0.6rem;
+    padding: 0 10px;
+    border: 1px solid rgb(65, 65, 65);
+}
+
+.pop-ent-desc {
+    /* margin: auto; */
+    text-align: center;
+}
+
+
+/* Slider */
+/* #slider {
+    background: #262625;
+} */
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide .clickThisDiv {
+    height: 100%;
+    width: 100%;
+}
+
+.swiper-pagination-bullet {
+    background: #fff !important;
+    opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0d6efd !important;
+}
+
+
+/* Most Reviewed on Cinemy */
+#upcoming-ents,
+#ongoing-ents,
+#most-reviewed {
+    padding: 7% 15% 2%;
+}
+
+/* Watchlist */
+
+#watchlist {
+    /* background-color: #141b29; */
+    padding: 7% 15%;
+    text-align: center;
+    margin-bottom: 5vh;
+    /* background-image: linear-gradient(white, #34B3F1); */
+}
+
+.h2-watchlist {
+    font-weight: 700;
+    color: white;
+}
+
+.watchlist-description {
+    color: white;
+    margin: 50px 0;
+    font-weight: 400;
+}
+
+
+/* Search  */
+/* Removed */
+
+
+/* Categories Section  */
+
+#pricing {
+    /* background-color: #141b29; */
+    /* background-image: linear-gradient(#34B3F1, white); */
+    text-align: center;
+    padding: 7% 15%;
+}
+
+.pricing-h2 {
+    color: white;
+    font-weight: 500;
+    font-size: 2.5rem;
+}
+
+.category-desc {
+    color: white;
+}
+
+
+.card-column {
+    padding: 3% 2%;
+    width: fit-content;
+}
+
+.card {
+    border-color: white;
+    /* background-color: #141b29; */
+    background-color: #262625;
+    border-radius: 5%;
+    color: white;
+    width: 311px;
+    margin: auto;
+}
+
+.about-ent {
+    margin: 15px 0;
+}
+
+.card-btn {
+    margin-top: 15px;
+}
+
+/* Features */
+
+/* #features {
+    background-color: #E4F9F5;
+    padding: 3% 15%;
+}
+
+.feature-item {
+    padding: 4% 0;
+}
+
+.features {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.boast {
+    width: 12rem;
+    margin: auto;
+    color: #8F8F8F;
+}
+
+.fa-solid {
+    color: #30E3CA;
+}
+
+.fa-solid:hover {
+    color: #11999E;
+} */
+
+
+/* About  */
+#about {
+    padding: 4% 15%;
+    /* background-color: #141b29; */
+    /* background-image: linear-gradient(black, white); */
+}
+
+.h2-about {
+    text-align: center;
+    color: black;
+    background-color: #fff;
+    padding: 3% 0;
+    font-size: 2.5rem;
+    margin-bottom: 0;
+}
+
+@media (max-width: 480px) {
+    .h2-about {
+        font-size: 2rem;
+    }
+}
+
+.about-row {
+    background-color: #202020;
+    margin: 0;
+}
+
+.feature-row {
+    padding-bottom: 5%;
+}
+
+.about {
+    text-align: center;
+    margin: 3% auto;
+}
+
+.data-origin-about-row>.about>.logo-image {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-origin-about-row>.about>.about-desc {
+    height: 50%;
+}
+
+@media (max-width: 576px) {
+    .about {
+        margin: 10% 0;
+    }
+
+    .about .about-desc {
+        font-size: 0.8rem;
+    }
+}
+
+.about span {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 3%;
+}
+
+.mal-logo {
+    height: 5rem;
+    margin: 5%;
+}
+
+.chiaki-logo {
+    height: 2rem;
+    margin: 5%;
+}
+
+.about-desc {
+    font-size: 15px;
+    line-height: 2;
+    color: white;
+}
+
+
+/* Footer  */
+
+#footer {
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'MetropolisRegular', monospace;
+    color: white;
+    /* background-color: #1e1e1e; */
+    background-color: #000;
+    bottom: 0;
+}
+
+.footer-icons {
+    width: 100px;
+}
+
+.icon-div {
+    height: 27px;
+    width: 27px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.icon-div i {
+    color: white;
+}
+
+.icon-div i:hover {
+    color: #0d6efd;
+}
+
+#footer p {
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 1245px) {
+    .title-h1 {
+        margin: 6% auto 0;
+    }
+
+    .title-h1 h1 {
+        font-size: 3rem;
+    }
+
+    .navbar-brand span {
+        display: none;
+    }
+
+    .navbar-brand:after {
+        content: '';
+    }
+}
+
+@media screen and (max-width: 1180px) {
+
+    .nav-item {
+        padding: 0 0.4rem;
+    }
+
+    #popular-entertainment,
+    #upcoming-ents,
+    #ongoing-ents,
+    #most-reviewed,
+    #watchlist,
+    #pricing,
+    #about {
+        padding: 15% 5% 5%;
+    }
+
+    .title-h1 h1 {
+        font-size: 2.5rem;
+    }
+
+    .review-btn {
+        width: 300px;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .about-img {
+        float: none;
+    }
+
+    .rating-img {
+        float: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .nav-item {
+        margin: 2% 0;
+    }
+
+    .nav-link {
+        width: fit-content;
+        font-size: 1rem;
+        margin-left: 0;
+    }
+
+    .offcanvas-title {
+        margin-left: 4%;
+    }
+
+    .search-box {
+        width: 85%;
+        margin-left: 13px;
+        margin-top: 8%;
+        margin-bottom: 4%;
+    }
+
+    .nav-search {
+        width: 100%;
+    }
+
+    .profile {
+        margin-left: 13px;
+        margin-top: 15px;
+        width: 85%;
+        padding: 0 3%;
+    }
+
+    .nav-sign-in {
+        margin: 10px 0 0 15px;
+
+    }
+}
+
+@media screen and (max-width: 824px) {
+    .title-h1 h1 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navbar {
+        padding: 2% 5%;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .start {
+        text-align: center;
+    }
+
+    .title-h1 {
+        margin: 6% auto 0;
+    }
+
+    .title-h1 h1 {
+        font-size: 1.8rem;
+    }
+
+    .clickThisDiv {
+        display: inline-block;
+        width: 50%;
+        margin: 0;
+    }
+
+    .ent-about {
+        font-size: 0.5rem;
+    }
+
+    .watchlist-description {
+        font-size: 0.8rem;
+    }
+
+    #footer {
+        height: 10vh;
+    }
+
+    #footer p {
+        font-size: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 281px) {
+    .popular-anime {
+        height: 200px;
+    }
+
+    .pop-ent-desc {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+}

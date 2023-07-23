@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.all-entees {
+    margin: 7% 15% 0;
+}
+
+.loader {
+    text-align: center;
+    margin: 7% 0;
+    display: none;
+}
+
+.show-loader {
+    display: block;
+}
+
+.loader > img {
+    width: 100px;
+}
+
+.load-more {
+    margin-top: 7%;
+}
+
+.load-more-btn {
+    width: fit-content;
+    padding: 5px;
+}
+
+.hide-btn {
+    display: none;
+}
+
+.end {
+    margin: 7% 15%;
+    color: white;
+    text-align: center;
+}
+
+.hide-end {
+    display: none;
+}
+
+@media (max-width: 576px) {
+    .all-entees {
+        margin: 7% 5% 0;
+    }
+}

@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container-signin {
+    height: 70vh;
+    padding: 5% 10%;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("../images/login-background.png");;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-form {
+    width: 40%;
+    height: 60vh;
+    margin: 0 auto;
+    padding: 10px;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5));
+    border-radius: 10px;
+    position: relative;
+}
+
+.sign-in-heading {
+    font-size: 3rem;
+    color: white;
+    margin: 5% 0 0;
+    text-align: center;
+}
+
+.form-inputs {
+    margin: 5% 0 0 4%;
+    width: 90%;
+}
+
+.sign-in-input {
+    width: 100%;
+    height: 3rem;
+    margin: 20px 0;
+    padding: 10px;
+    background: transparent;
+    font-size: 1.2rem;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.sign-in-input:active,
+.sign-in-input:focus {
+    outline: none;
+}
+
+.sign-in-submit-btn {
+    height: 3rem;
+    width: 100%;
+    font-size: 1.3rem;
+    margin: 20px auto 0 auto;
+    background-color: #7e391a;
+    color: white;
+    transition: 0.3s;
+    letter-spacing: 2px;
+    border: none;
+}
+
+.sign-in-submit-btn:hover,
+.sign-in-submit-btn:focus {
+    letter-spacing: 5px;
+}
+
+.create-new-account {
+    position: absolute;
+    width: 90%;
+    bottom: 20px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.create-new-account a {
+    color: white;
+    transition: 0.2s;
+}
+
+.create-new-account a:hover {
+    color: #7e391a;
+}
+
+@media screen and (max-width: 1245px){
+    .sign-in-form {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 824px) {
+    .sign-in-form {
+        width: 70%;
+    }
+
+    .sign-in-heading {
+        font-size: 2.5rem;
+    }
+
+    .sign-in-submit-btn {
+        height: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container-signin {
+        height: 75vh;
+        padding: 10% 5%;
+    }
+
+    .sign-in-form {
+        width: 90%;
+    }
+}

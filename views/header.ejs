@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@200&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/metropolis" type="text/css" />
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="public, max-age=3600">
+    <title>AnimeSake</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- Bootstrap CSSs -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="/images/beer.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/searched-ent.css">
+    <link rel="stylesheet" href="/css/entertainments.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/watchEdlist.css">
+    <link rel="stylesheet" href="/css/watchlist.css">
+    <link rel="stylesheet" href="/css/advancedSearch.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <!-- TITLE  -->
+
+    <section id="title">
+
+        <nav class="navbar navbar-expand-lg">
+            <h1 class="navbar-brand">
+                AnimeSake<span class="spacing">|</span>
+            </h1>
+            <button class="navbar-dark navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span><i class="fa-sharp fa-solid fa-bars"></i></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark nav-offcanvas" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Cinemy</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body nav-body">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#footer">CONTACT</a></li>
+                    </ul>
+                    <form class="d-flex ms-auto search-form" action="/" method="post" onsubmit="return validateForm()">
+                        <div class="search-box">
+                            <input class="form-control me-2 nav-search" autocomplete="off" name="search"
+                                placeholder="Type to Search..." required>
+                            <input type="hidden" class="mal_id" name="mal_id" value="">
+                            <div class="autocom-box">
+
+                            </div>
+                            <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                    <% if(signedInflag) { %>
+                    <div class="dropdown profile">
+                        <div class="username">
+                            <%=username%>
+                        </div>
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/watchlist">Your Watchlist</a></li>
+                            <li><a class="dropdown-item" href="/watchedList">Your Watch History</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                        </ul>
+                    </div>
+                    <% } else { %>
+                    <button class="nav-sign-in">
+                        <a href="/login">Sign in</a>
+                    </button>
+                    <% } %>
+                </div>
+            </div>
+        </nav>

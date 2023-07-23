@@ -1,0 +1,49 @@
+<%- include('header'); -%>
+
+<section id="about">
+    <h2 class="h2-about">Features</h2>
+    <div class="row about-row feature-row">
+        <div class="about col-lg-6 col-sm-12">
+            <span><i class="fa fa-solid fa-star"></i></span>
+            <p class="about-desc">See other people's reviews on an anime page. Add your own Reviews and pros and cons of
+                an anime on the bottom of anime page so that other people can make their decisions of watching it.</p>
+        </div>
+        <div class="about col-lg-6 col-sm-12">
+            <span><i class="fas fa-search"></i></span>
+            <p class="about-desc">Discover animes using the exclusive filter feature. Click on the Discover Animes
+                button on the home page to get all your filters like year, season, score, as well as more than 20
+                genres.</p>
+        </div>
+        <div class="about col-lg-6 col-sm-12">
+            <span><i class="fa-solid fa-list"></i></span>
+            <p class="about-desc">Make your own watchlist by logging in, going to an anime page, and clicking on the Add
+                to watchlist button on the top right corner. You will be redirected to the watchlist page. It can also
+                be accessed from the profile.</p>
+        </div>
+        <div class="about col-lg-6 col-sm-12">
+            <span><i class="fa-solid fa-circle-check"></i></span>
+            <p class="about-desc">Maintain your watch history by accessing it from the profile. Easily add animes once
+                you finish watching them, and they will be saved forever in my database until you and I both remember
+                our passwords <i class="fa-regular fa-face-smile-wink"></i></p>
+        </div>
+    </div>
+    <h2 class="h2-about">Where does the Data come From ?</h2>
+    <div class="row about-row data-origin-about-row">
+        <div class="about col-lg-6 col-sm-12">
+            <div class="logo-image">
+                <img class="mal-logo" src="images/MyAnimeList.png" alt="">
+            </div>
+            <p class="about-desc">All the top, ongoing, upcoming animes and every filter feature is provided by
+                JikanAPI, which is an uofficial API. It parses and scrapes data from MyAnimeList, to satisfy the needs
+                for an API.</p>
+        </div>
+        <div class="about col-lg-6 col-sm-12">
+            <div class="logo-image">
+                <img class="chiaki-logo" src="images/chiaki-logo.png" alt="">
+            </div>
+            <p class="about-desc">The Watch order that you see on every anime page, is requested from this api. On clicking on any anime from the watch order, you will be redirected to that anime's page.</p>
+        </div>
+    </div>
+</section>
+
+<%- include('footer'); -%>

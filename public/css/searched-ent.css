@@ -1,0 +1,438 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+.full-in-flex {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 10%;
+    /* background-color: #141b29; */
+    background-color: #262625;
+}
+
+.add-to-watchlist {
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.entertainment {
+    /* margin: 5% 10% 0; */
+    margin: 3% 2% 0;
+    min-height: 500px;
+    display: flex;
+}
+
+.poster {
+    display: block;
+    width: 40%;
+    display: grid;
+    justify-items: center;
+}
+
+.poster-img {
+    width: 100%;
+    height: 500px;
+    margin: auto 0;
+}
+
+.details {
+    margin: 10px 0;
+}
+
+.ent-details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-left: 30px;
+    color: white;
+}
+
+.title {
+    display: inline-block;
+}
+
+.ent-type {
+    display: inline-block;
+}
+
+.details-list {
+    display: flex;
+    list-style: none;
+}
+
+.details-item {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.details-item-2nd,
+.details-item-3rd {
+    margin: auto 10px;
+}
+
+.ratings,
+.cast-details {
+    margin: 10px 0;
+}
+
+.genre-element {
+    margin-left: 5px;
+}
+
+.genre-element::after {
+    content: "|";
+    margin-left: 5px;
+}
+
+.genre-element:last-child::after {
+    content: "";
+}
+
+/* Watch Order Modal */
+.see-watch-order-container {
+    margin: 3% 0 0 2%;
+}
+
+.watch-order-dialog {
+    overflow-y: initial !important;
+}
+
+.watch-order-modal-body {
+    height: 40vh;
+    overflow-y: auto;
+}
+
+/* .watch-order-modal-content {
+    max-height: 40vh;
+} */
+
+.watch-order-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.watch-order-item:nth-child(odd) {
+    background-color: #dfdfdf;
+}
+
+.item-name {
+    font-size: 1rem;
+    position: relative;
+}
+
+.item-info {
+    font-size: 0.8rem;
+}
+
+.plot {
+    margin: 3% 2%;
+    color: white;
+}
+
+.plot-head {
+    margin-bottom: 10px;
+}
+
+.more-info {
+    margin: 0 2% 2%;
+    color: white;
+}
+
+.similar-ents-btn-div {
+    margin: 3% 2%;
+}
+
+.similar-ents-btn-div button {
+    width: 100%;
+}
+
+.reviews {
+    color: white;
+    margin: 2% 2%;
+}
+
+.reviews .plot-head {
+    margin-bottom: 1%;
+}
+
+.review {
+    padding: 2%;
+    box-shadow: 0 0 2px;
+    margin: 2% 0;
+}
+
+.star-rating {
+    font-size: 1.3rem;
+    color: white;
+    float: right;
+}
+
+.review-head {
+    margin: 0;
+    display: inline-block;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.by-name {
+    font-size: 12px;
+    margin-bottom: 2%;
+    letter-spacing: 1px;
+}
+
+.new-review {
+    margin: 8% auto 1% auto;
+    font-weight: 700;
+}
+
+.new-review-form {
+    padding: 10px 0;
+}
+
+.new-review-rating {
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+    width: 100%;
+    background: transparent;
+    padding: 1%;
+    color: white;
+    border: 1px solid #6c757d;
+    transition: 0.3s;
+}
+
+.new-review-rating:focus {
+    outline: none;
+    border: 1px solid #fff;
+}
+
+.new-review-head {
+    font-size: 1.2rem;
+    margin-bottom: 2%;
+    width: 100%;
+    background: transparent;
+    padding: 1%;
+    color: white;
+    border: 1px solid #6c757d;
+    transition: 0.3s;
+}
+
+.new-review-head:active {
+    outline: none;
+}
+
+.new-review-head:focus {
+    outline: none;
+    border: 1px solid #fff;
+}
+
+.new-review-desc {
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 2%;
+    background: transparent;
+    color: white;
+    transition: 0.3s;
+}
+
+.new-review-desc:focus {
+    outline: none;
+    border: 1px solid #fff;
+}
+
+.submit-review-btn {
+    height: 3rem;
+    width: 8rem;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    transition: 0.3s;
+}
+
+.submit-review-btn:hover,
+.submit-review-btn:focus {
+    letter-spacing: 2px;
+}
+
+
+
+@media screen and (max-width: 1180px) {
+    h1.title {
+        font-size: 2.5rem;
+    }
+
+    .details,
+    .alternate-title,
+    .not-aired,
+    .ratings,
+    .cast-details,
+    .plot-desc,
+    .more-info p {
+        font-size: 0.9rem;
+    }
+
+    .new-review-rating,
+    .new-review-head,
+    .new-review-desc,
+    .submit-review-btn {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .entertainment {
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .poster {
+        width: 50%;
+        margin: 0 auto 10px;
+    }
+
+    h1.title {
+        font-size: 2rem;
+    }
+
+    .ent-details {
+        margin-left: 0;
+    }
+
+    .details,
+    .alternate-title,
+    .not-aired,
+    .ratings,
+    .cast-details {
+        margin: 3px 0;
+    }
+
+    .star-rating {
+        font-size: 1rem;
+    }
+
+    .review-head {
+        font-size: 1.1rem;
+    }
+
+    .by-name {
+        font-size: 10px;
+        margin-bottom: 2%;
+        letter-spacing: 1px;
+    }
+
+    .review-desc,
+    .delete-review {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .poster {
+        width: 75%;
+    }
+
+    .full-in-flex {
+        padding: 1%;
+    }
+
+    .new-review-rating,
+    .new-review-head,
+    .new-review-desc,
+    .submit-review-btn {
+        margin: 3% 0;
+        padding: 2%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .full-in-flex {
+        margin: 5%;
+    }
+
+    .entertainment {
+        margin: 0;
+    }
+
+    .poster {
+        width: 100%;
+    }
+
+    h1.title {
+        font-size: 1.5rem;
+        padding-left: 10px;
+    }
+
+    .details,
+    .alternate-title,
+    .not-aired,
+    .ratings,
+    .cast-details {
+        font-size: 0.8rem;
+        padding-left: 10px;
+    }
+
+    .item-name {
+        font-size: 0.8rem;
+    }
+
+    .item-info {
+        font-size: 0.6rem;
+    }
+
+    .plot-desc,
+    .more-info p {
+        font-size: 0.8rem;
+    }
+
+    .reviews .plot-head {
+        margin-top: 10%;
+    }
+
+    .review {
+        margin: 4% 0;
+    }
+
+    .review-head {
+        font-size: 1.1rem;
+    }
+
+    .star-rating {
+        font-size: 1rem;
+    }
+
+    .by-name {
+        font-size: 10px;
+        margin-bottom: 2%;
+        letter-spacing: 1px;
+    }
+
+    .review-desc,
+    .delete-review {
+        font-size: 0.8rem;
+    }
+
+    .new-review {
+        margin-top: 15%;
+    }
+
+    .submit-review-btn {
+        font-size: 0.8rem;
+        height: 2rem;
+        width: 6rem;
+    }
+}
