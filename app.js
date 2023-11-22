@@ -24,8 +24,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect('mongodb://127.0.0.1:27017/cinemyDB');
-// mongoose.connect(process.env.MONGO_URI)
+// mongoose.connect('mongodb://127.0.0.1:27017/cinemyDB');
+mongoose.connect(process.env.MONGO_URI)
 
 const watchlistSchema = new mongoose.Schema({
     poster: String,
