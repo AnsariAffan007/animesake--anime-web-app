@@ -61,6 +61,7 @@
                                     <form id="form<%=watchedList.indexOf(element) + 1%>" class="new-watched-ent-form"
                                         action="/update-watch-history" method="post">
                                         <input type="hidden" value="<%=element.name%>" name="originalName">
+                                        <input type="hidden" value="<%=watchedList.indexOf(element)%>" name="index">
                                         <input value="<%=element.name%>" class="new-watched-ent-name" type="text"
                                             placeholder="Name" name="watchedEntName" autocomplete="off" required>
                                         <input value="<%=element.additionalInfo%>" class="new-watched-ent-desc"
@@ -80,6 +81,7 @@
                     </div>
                     <form action="/delete-watched-ent" method="post">
                         <input type="hidden" name="watchedEntToDelete" value="<%=element.name%>">
+                        <input type="hidden" name="index" value="<%=watchedList.indexOf(element)%>">
                         <button class="delete-watched-ent-btn" type="submit">Delete</button>
                     </form>
                 </td>

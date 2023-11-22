@@ -332,10 +332,10 @@ app.post("/watchedList", function (req, res) {
             dateOfWatch: req.body.dateOfWatch
         }
 
-        User.findOne({ username: req.user.username }, function (err, foundUser) {
+        User.findOne({ username: req.user.username }, async function (err, foundUser) {
             if (!err) {
                 foundUser.watchHistory.push(newlyWatchedEnt)
-                foundUser.save();
+                await foundUser.save();
                 res.redirect("/watchedList");
             }
             else {
@@ -355,8 +355,10 @@ app.post("/delete-watched-ent", function (req, res) {
 
         signedInflag = true;
 
-        User.findOneAndUpdate({ username: req.user.username }, { $pull: { watchHistory: { name: req.body.watchedEntToDelete } } }, function (error, watchlist) {
+        User.findOne({ username: req.user.username }, async function (error, foundUser) {
             if (!error) {
+                foundUser.watchHistory.splice(parseInt(req.body.index), 1);
+                await foundUser.save();
                 res.redirect("/watchedList");
             }
         })
@@ -371,17 +373,14 @@ app.post("/update-watch-history", function (req, res) {
 
         signedInflag = true;
 
-        User.findOne({ username: req.user.username }, function (error, foundUser) {
+        User.findOne({ username: req.user.username }, async function (error, foundUser) {
             if (!error) {
-                foundUser.watchHistory.some(function (element) {
-                    if (element.name === req.body.originalName) {
-                        element.name = req.body.watchedEntName;
-                        element.additionalInfo = req.body.info;
-                        element.dateOfWatch = req.body.dateOfWatch;
-                    }
-                    return;
-                })
-                foundUser.save();
+                foundUser.watchHistory[parseInt(req.body.index)] = {
+                    name: req.body.watchedEntName,
+                    additionalInfo: req.body.info,
+                    dateOfWatch: req.body.dateOfWatch
+                }
+                await foundUser.save();
                 res.redirect("/watchedList");
             }
         })
