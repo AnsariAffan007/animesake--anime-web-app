@@ -24,8 +24,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// mongoose.connect('mongodb://127.0.0.1:27017/cinemyDB');
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect('mongodb://127.0.0.1:27017/cinemyDB');
+// mongoose.connect(process.env.MONGO_URI)
 
 const watchlistSchema = new mongoose.Schema({
     poster: String,
@@ -95,11 +95,11 @@ app.get("/reviewed", async (req, res) => {
 })
 
 app.post("/", async function (req, res) {
-
     let existsInWatchlist = false;
     if (req.isAuthenticated()) {
         let watchlist = req.user.watchlist;
         watchlist.some(function (element) {
+            console.log(req.body.search);
             if (element.name === req.body.search) {
                 existsInWatchlist = true;
             }
