@@ -42,9 +42,14 @@
             <h1 class="navbar-brand">
                 AnimeSake
             </h1>
+            <li class="d-inline d-lg-none ms-auto nav-item search-section-toggler">
+                <a class="nav-link" data-search-section-active="false" style="display: flex;align-items: center;" href="#">
+                    <i class="fa-solid fa-search"></i>
+                </a>
+            </li>
             <button class="navbar-dark navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
-                <span><i class="fa-sharp fa-solid fa-bars"></i></span>
+                <span style="color: #fff;"><i class="fa-sharp fa-solid fa-bars"></i></span>
             </button>
             <div class="offcanvas offcanvas-end text-bg-dark nav-offcanvas" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
@@ -73,18 +78,12 @@
                                 <span class="nav-link-label">Contact</span>
                             </a>
                         </li>
+                        <li class="d-none d-lg-block nav-item search-section-toggler">
+                            <a class="nav-link" data-search-section-active="false" href="#">
+                                <i class="fa-solid fa-search"></i>
+                            </a>
+                        </li>
                     </ul>
-                    <form class="d-flex ms-auto search-form" action="/" method="post" onsubmit="return validateForm()">
-                        <div class="search-box">
-                            <input class="form-control me-2 nav-search" autocomplete="off" name="search"
-                                placeholder="Type to Search..." required>
-                            <input type="hidden" class="mal_id" name="mal_id" value="">
-                            <div class="autocom-box">
-
-                            </div>
-                            <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
-                        </div>
-                    </form>
                     <% if(signedInflag) { %>
                     <div class="dropdown profile">
                         <div class="profile-toggle-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -110,5 +109,22 @@
                     </button>
                     <% } %>
                 </div>
+            </div>
+            <div class="search-section" data-section-active="false">
+                <form class="search-form" action="/" method="post" onsubmit="return validateForm()">
+                    <div class="search-box-padder">
+                        <div class="search-box">
+                            <div class="input-box">
+                                <input class="form-control me-2 nav-search" autocomplete="off" name="search"
+                                    placeholder="Type to Search..." required>
+                                <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                            <input type="hidden" class="mal_id" name="mal_id" value="">
+                            <div class="autocom-box">
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </nav>

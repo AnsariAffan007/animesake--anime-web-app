@@ -58,27 +58,6 @@ h3 {
     flex-direction: column;
 }
 
-/* Title  */
-
-.start {
-    background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../images/aot-background\(2\).jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 85vh;
-}
-
-@media (max-width: 576px) {
-    .start {
-        background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../images/AOTbackground.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 90vh;
-        /* background-position-x: 75%; */
-    }
-}
-
 .container-fluid {
     padding: 3% 15%;
 }
@@ -88,6 +67,16 @@ h3 {
     padding: 2% 15%;
     background-color: #000;
     color: white;
+}
+
+.nav-body {
+    margin-left: auto;
+}
+
+@media (max-width: 991px) {
+    .nav-body {
+        margin-left: 0;
+    }
 }
 
 .navbar-collapse {
@@ -158,6 +147,14 @@ h3 {
 .nav-link:focus,
 .nav-link:active {
     outline: none;
+    color: #fff;
+}
+
+.nav-link[data-search-section-active="false"] {
+    color: white;
+}
+
+.nav-link[data-search-section-active="true"] {
     color: #0d6efd;
 }
 
@@ -165,75 +162,6 @@ h3 {
     .nav-link-label {
         display: none;
     }
-}
-
-.search-box {
-    position: relative;
-    margin-right: 10px;
-}
-
-.nav-search {
-    border-radius: 5px;
-}
-
-.nav-search:focus {
-    -webkit-box-shadow: 0 0 8px #fff;
-    box-shadow: 0 0 8px #fff;
-}
-
-.autocom-box {
-    background-color: white;
-    color: black;
-    max-width: 300px;
-    /* padding: 10px 8px; */
-    max-height: 280px;
-    overflow-y: auto;
-    border-radius: 5px;
-    /* opacity: 0; */
-    /* pointer-events: none; */
-    position: absolute;
-    z-index: 1;
-}
-
-.search-box li {
-    list-style: none;
-    padding: 8px 12px;
-    padding-left: 0;
-    cursor: default;
-    border-radius: 3px;
-    /* width: 100%; */
-    font-size: 0.7rem;
-    display: flex;
-    overflow: auto;
-}
-
-.search-box li:hover {
-    background-color: #efefef;
-}
-
-.search-box li .suggested-anime-img {
-    width: 50px;
-    height: 70px;
-    margin-right: 10px;
-}
-
-.search-box li div {
-    margin: auto 0;
-}
-
-.search-btn {
-    height: 38px;
-    width: 38px;
-    line-height: 38px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-align: center;
-    cursor: pointer;
-    color: black;
-    margin-right: 10px;
-    border: none;
-    background: none;
 }
 
 .profile {
@@ -302,6 +230,113 @@ h3 {
     text-decoration: none;
 }
 
+/* Search section and Search Bar */
+.search-section {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1;
+    display: grid;
+    transition: grid-template-rows 500ms;
+}
+
+.search-section[data-section-active='true'] {
+    grid-template-rows: 1fr;
+}
+
+.search-section[data-section-active='false'] {
+    grid-template-rows: 0fr;
+}
+
+.search-section>.search-form {
+    overflow: hidden;
+}
+
+.search-section .search-box-padder {
+    padding: 2% 15%;
+}
+
+.search-box {
+    /* position: relative; */
+}
+
+.input-box {
+    position: relative;
+}
+
+.nav-search {
+    border-radius: 5px;
+}
+
+/* .nav-search:focus {
+    -webkit-box-shadow: 0 0 8px #fff;
+    box-shadow: 0 0 8px #fff;
+} */
+
+.search-btn {
+    height: 38px;
+    width: 38px;
+    line-height: 38px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    cursor: pointer;
+    color: black;
+    margin-right: 10px;
+    border: none;
+    background: none;
+}
+
+.autocom-box {
+    background-color: white;
+    color: black;
+    /* max-width: 300px; */
+    width: calc(100% - 30%);
+    /* padding: 10px 8px; */
+    max-height: 280px;
+    overflow-y: auto;
+    border-radius: 5px;
+    /* opacity: 0; */
+    /* pointer-events: none; */
+    position: absolute;
+    /* z-index: 1; */
+}
+
+@media (max-width: 576px) {
+    .autocom-box {
+        width: calc(100% - 10%);
+    }
+}
+
+.search-box li {
+    list-style: none;
+    padding: 8px 12px;
+    /* padding-left: 0; */
+    cursor: default;
+    border-radius: 3px;
+    /* width: 100%; */
+    font-size: 0.7rem;
+    display: flex;
+    overflow: auto;
+}
+
+.search-box li:hover {
+    background-color: #efefef;
+}
+
+.search-box li .suggested-anime-img {
+    width: 50px;
+    height: 70px;
+    margin-right: 10px;
+}
+
+.search-box li div {
+    margin: auto 0;
+}
+
 .nav-button {
     margin-bottom: 38px;
     --bs-btn-focus-shadow-rgb: none !important;
@@ -326,7 +361,26 @@ h3 {
     padding: 10vh 0;
 }
 
+/* Title  */
 
+.start {
+    background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../images/aot-background\(2\).jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 85vh;
+}
+
+@media (max-width: 576px) {
+    .start {
+        background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../images/AOTbackground.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 90vh;
+        /* background-position-x: 75%; */
+    }
+}
 
 /* Entertainment Recommendations */
 
@@ -734,11 +788,8 @@ h3 {
         margin-left: 4%;
     }
 
-    .search-box {
-        width: 85%;
-        margin-left: 13px;
-        margin-top: 8%;
-        margin-bottom: 4%;
+    .search-section .search-box-padder {
+        padding: 5% 15%;
     }
 
     .nav-search {
@@ -771,6 +822,10 @@ h3 {
 
     .navbar-brand {
         font-size: 1.5rem;
+    }
+
+    .search-section .search-box-padder {
+        padding: 5%;
     }
 
     .start {

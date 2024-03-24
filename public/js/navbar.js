@@ -25,7 +25,7 @@ async function loadMovies() {
         })
     }
     else {
-        $(".autocom-box").append("<li>" + "No results found." + "</li>");
+        $(".autocom-box").append(`<li value style='padding: "5px"'>` + "No results found." + "</li>");
     }
 }
 
@@ -39,11 +39,13 @@ function select(element) {
 
 var typingTimer;
 $('.nav-search').keyup(function (e) {
-    $(".autocom-box").empty();
+    if ($(".autocom-box").find("li[value]").length > 0) {
+        $(".autocom-box").empty();
+    };
     if ($(".autocom-box").find(".load-div").length !== 1) {
         $(".autocom-box").append(
             `<div class="load-div" style="display: flex;justify-content: center;">
-                <img style="width: 50%;" src="images/loader.gif" alt="">
+                <img style="width: 20%;" src="images/loader.gif" alt="">
             </div>`
         )
     };
@@ -74,3 +76,23 @@ $(document).keypress(function (e) {
         $(".search-form").submit();
     }
 });
+
+$(".search-section-toggler").on("click", function (e) {
+    let searchSection = $(".search-section");
+    let currentStatus = searchSection.data("section-active");
+    let nextStatus = !currentStatus
+    // Setting serach section status to make it visible
+    searchSection.data("section-active", nextStatus)
+    searchSection.attr("data-section-active", nextStatus);
+    // Setting search icon's active status
+    $(".nav-link[data-search-section-active]").each(function () {
+        $(this).attr("data-search-section-active", nextStatus);
+    });
+
+    // If search section is closed and something is searched, cancel all that.
+    if(!nextStatus) {
+        $(".autocom-box").empty();
+        $(".autocom-box").css("padding", 0);
+        $(".nav-search").val("");
+    }
+})

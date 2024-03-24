@@ -30,16 +30,6 @@
     }
 }
 
-.nav-body {
-    margin-left: auto;
-}
-
-@media (max-width: 991px) {
-    .nav-body {
-        margin-left: 0;
-    }
-}
-
 .separation {
     margin: 1% 15%;
 }
