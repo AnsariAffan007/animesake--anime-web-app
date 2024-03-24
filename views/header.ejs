@@ -40,7 +40,7 @@
 
         <nav class="navbar navbar-expand-lg">
             <h1 class="navbar-brand">
-                AnimeSake<span class="spacing">|</span>
+                AnimeSake
             </h1>
             <button class="navbar-dark navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -55,9 +55,24 @@
                 </div>
                 <div class="offcanvas-body nav-body">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about">ABOUT</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#footer">CONTACT</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                <i class="fa-solid fa-house"></i>
+                                <span class="nav-link-label">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <span class="nav-link-label">About</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#footer">
+                                <i class="fa-solid fa-phone"></i>
+                                <span class="nav-link-label">Contact</span>
+                            </a>
+                        </li>
                     </ul>
                     <form class="d-flex ms-auto search-form" action="/" method="post" onsubmit="return validateForm()">
                         <div class="search-box">
@@ -72,12 +87,13 @@
                     </form>
                     <% if(signedInflag) { %>
                     <div class="dropdown profile">
-                        <div class="username">
-                            <%=username%>
+                        <div class="profile-toggle-btn" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="username">
+                                <%=username%>
+                            </div>
+                            <a class="btn btn-secondary dropdown-toggle" href="#">
+                            </a>
                         </div>
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                        </a>
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/watchlist">Your Watchlist</a></li>

@@ -6,8 +6,9 @@ async function loadMovies() {
     const url = 'https://api.jikan.moe/v4/anime?q=' + searchTerm;
     const res = await fetch(url);
     const data = await res.json();
+    $(".autocom-box").empty();
     if (data.data.length !== 0) {
-        // console.log(data.Search);
+        // console.log(data.data);
         data.data.forEach(function (element) {
             $(".autocom-box").append(
                 `<li value="${element.mal_id}" onclick='select(this)'>
@@ -39,6 +40,13 @@ function select(element) {
 var typingTimer;
 $('.nav-search').keyup(function (e) {
     $(".autocom-box").empty();
+    if ($(".autocom-box").find(".load-div").length !== 1) {
+        $(".autocom-box").append(
+            `<div class="load-div" style="display: flex;justify-content: center;">
+                <img style="width: 50%;" src="images/loader.gif" alt="">
+            </div>`
+        )
+    };
     clearTimeout(typingTimer);
     if ($(this).val()) {
         typingTimer = setTimeout(loadMovies, 500);
@@ -46,10 +54,12 @@ $('.nav-search').keyup(function (e) {
     else if (e.keyCode == 8) {
         $(".search-box li").css("display", "none");
         $(".autocom-box").css("padding", "0");
+        $(".autocom-box").empty();
     }
     else {
         $(".search-box li").css("display", "none");
         $(".autocom-box").css("padding", "0");
+        $(".autocom-box").empty();
     }
 });
 

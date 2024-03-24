@@ -9,7 +9,7 @@ html {
 
 body {
     /* overflow-x: hidden; */
-/*     font-family: 'Roboto Mono', 'MetropolisRegular', monospace; */
+    /*     font-family: 'Roboto Mono', 'MetropolisRegular', monospace; */
     font-family: 'MetropolisRegular', monospace;
     /* background-color: #1B262C; */
     /* background-color: black; */
@@ -106,18 +106,25 @@ h3 {
     color: white;
 }
 
-.spacing {
-    display: inline-block;
-    margin-left: 50px;
-    font-weight: normal;
-}
-
-.navbar-nav {
-    margin-left: 10px;
+@media (min-width: 992px) {
+    .navbar-nav {
+        margin-right: 1rem;
+    }
 }
 
 .nav-item {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
+    font-size: 2rem;
+}
+
+.nav-item i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 992px) {
+    .nav-item i {
+        font-size: 1rem;
+    }
 }
 
 .nav-link {
@@ -154,13 +161,19 @@ h3 {
     color: #0d6efd;
 }
 
+@media (min-width: 992px) {
+    .nav-link-label {
+        display: none;
+    }
+}
+
 .search-box {
     position: relative;
     margin-right: 10px;
 }
 
 .nav-search {
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .nav-search:focus {
@@ -229,12 +242,17 @@ h3 {
     margin: auto 0;
     background-color: white;
     color: black;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 0 1%;
+}
+
+.profile-toggle-btn {
+    display: flex;
 }
 
 .username {
     margin: auto 2px;
+    user-select: none;
 }
 
 .profile .btn {
@@ -257,7 +275,7 @@ h3 {
 }
 
 .dropdown-menu {
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .dropdown-menu .dropdown-item:active {
@@ -276,7 +294,7 @@ h3 {
     color: black;
     height: 2.2rem;
     min-width: 5rem;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .nav-sign-in a {
