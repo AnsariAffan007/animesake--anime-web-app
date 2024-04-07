@@ -104,15 +104,31 @@
     }
 }
 
-.table-bar>.row-nums-displayer {
+.table-bar .row-nums-displayer {
     color: white;
     margin: auto 0;
 }
 
-.table-bar>.add-anime-btn {
+.table-bar .download-excel-btn {
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: #454545;
+    color: white;
+    border: 1px solid #565656;
+}
+
+.table-bar .add-anime-btn {
     padding: 3px 8px;
     border-radius: 5px;
     background-color: white;
+}
+
+@media (max-width: 576px) {
+    .table-bar .download-excel-btn,
+    .table-bar .add-anime-btn {
+        padding: 2px 6px;
+        font-size: 0.75rem;
+    }
 }
 
 /* Table */

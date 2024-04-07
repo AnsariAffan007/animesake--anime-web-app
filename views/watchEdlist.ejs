@@ -34,21 +34,27 @@
 
 <div class="table-bar">
     <div class="row-nums-displayer"><%=watchedList.length%> Rows</div>
-    <button class="add-anime-btn" data-bs-toggle="modal" data-bs-target="#ModalAdd">
-        <span>New</span>
-        <span><i class="fa-solid fa-plus"></i></span>
-    </button>
+    <div>
+        <button class="download-excel-btn">
+            <span>Excel</span>
+            <span><i class="fa fa-arrow-down"></i></span>
+        </button>
+        <button class="add-anime-btn" data-bs-toggle="modal" data-bs-target="#ModalAdd">
+            <span>New</span>
+            <span><i class="fa-solid fa-plus"></i></span>
+        </button>
+    </div>
 </div>
 
 <!-- Main Content -->
 <div class="table-watch-history">
-    <table>
+    <table id="watch-history-table">
         <thead>
             <th>Number</th>
             <th>Name</th>
             <th>Additional Information</th>
             <th>Date of Watch</th>
-            <th>Options</th>
+            <th class="no-export">Options</th>
         </thead>
         <tbody>
             <% watchedList.slice().reverse().forEach(function(element){ %>
@@ -65,7 +71,7 @@
                 <td class="date-of-watch" data-label="Date of Watch">
                     <%=element.dateOfWatch%>
                 </td>
-                <td data-label="" class="buttons-row">
+                <td data-label="" class="buttons-row no-export">
                     <button class="edit-btn" data-bs-toggle="modal"
                         data-bs-target="#Modal<%=watchedList.indexOf(element) + 1%>" +>Edit</button>
                     <!-- Modal -->
@@ -113,12 +119,22 @@
         </tbody>
     </table>
 </div>
-
+<script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
 <script>
     // Send Request to Edit watched Entertainment
     $('.save-changes-btn').on('click', function (e) {
         e.preventDefault();
         $("#form" + this.id).submit();
+    })
+
+    $(".download-excel-btn").click(function(e) {
+        $("#watch-history-table").table2excel({
+            exclude: ".no-export",
+            filename: "download.xls",
+            fileext: ".xls",
+            exclude_links: true,
+            exclude_inputs: true
+        });
     })
 
     // $("#addAnimeBtn").on('click', function(e) {
