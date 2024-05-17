@@ -191,8 +191,7 @@ async function loadFilteredAnimes(url) {
     parsedData.data.forEach((object, index) => {
         $(".popular-ents").append(
             `<div class="col-lg-2 col-md-3 col-sm-6 clickThisDiv">
-                <form class="recommended-ent" action="/entertainments" method="post">
-                    <input type="hidden" class="hiddenSearchName" name="mal_id" value="${object.mal_id}">
+                <form class="recommended-ent" action="/anime/${object.mal_id}" method="get">
                     <img class="popular-anime" src="${object.images.jpg.image_url}" alt="aot-img">
                     <div class="ent-about">
                         <p class="pop-ent-desc">${(object.title_english !== null) ? object.title_english : object.title}</p>

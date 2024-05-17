@@ -18,23 +18,16 @@ async function loadMovies() {
             );
             $(".autocom-box").css("padding", "10px 8px");
 
-            // console.log(searchTerm.toLowerCase());
+            // Setting mal_id if search term matches name of the anime
             if (element.title.toLowerCase() === searchTerm.toLowerCase()) {
-                $(".mal_id").val(element.mal_id);
+                $(".nav-search").attr("matched", "");
+                $(".nav-search").attr("anime_id", element.mal_id);
             }
         })
     }
     else {
         $(".autocom-box").append(`<li value style='padding: "5px"'>` + "No results found." + "</li>");
     }
-}
-
-function select(element) {
-    let suggestedString = element.innerText;
-    $(".mal_id").val(element.value);
-    // console.log(element.value);
-    $(".nav-search").val(suggestedString);
-    $(".search-form").submit();
 }
 
 var typingTimer;
@@ -65,15 +58,27 @@ $('.nav-search').keyup(function (e) {
     }
 });
 
+function select(element) {
+    console.log("hey");
+    $(".search-form").removeAttr("onsubmit");
+    $(".search-form").attr("action", "/anime/" + element.value);
+    $(".search-form").submit();
+}
+
 function validateForm() {
-    if ($(".mal_id").val().length === 0) return false;
+    let matchExists = $(".nav-search").attr("matched");
+    console.log(matchExists);
+    if (matchExists === undefined || matchExists === false) return false;
     else return true;
 }
 
 $(document).keypress(function (e) {
     var key = e.which;
     if (key == 13) {
-        $(".search-form").submit();
+        if (validateForm()) {
+            $(".search-form").attr("action", "/anime/" + $(".nav-search").attr("anime_id"));
+            $(".search-form").submit();
+        }
     }
 });
 
@@ -90,7 +95,7 @@ $(".search-section-toggler").on("click", function (e) {
     });
 
     // If search section is closed and something is searched, cancel all that.
-    if(!nextStatus) {
+    if (!nextStatus) {
         $(".autocom-box").empty();
         $(".autocom-box").css("padding", 0);
         $(".nav-search").val("");

@@ -13,7 +13,7 @@
                 <h1 class="modal-title fs-5 text-dark">New</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="newAnimeForm" class="new-watched-ent-form" action="/watchedList" method="post">
+            <form id="newAnimeForm" class="new-watched-ent-form" action="/user/watchedList" method="post">
                 <div class="modal-body">
                     <input class="new-watched-ent-name" type="text" placeholder="Name" name="watchedEntName"
                         autocomplete="off" required>
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <form id="form<%=watchedList.indexOf(element) + 1%>" class="new-watched-ent-form"
-                                        action="/update-watch-history" method="post">
+                                        action="/user/update-watch-history" method="post">
                                         <input type="hidden" value="<%=element.name%>" name="originalName">
                                         <input type="hidden" value="<%=watchedList.indexOf(element)%>" name="index">
                                         <input value="<%=element.name%>" class="new-watched-ent-name" type="text"
@@ -108,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-                    <form action="/delete-watched-ent" method="post">
+                    <form action="/user/delete-watched-ent" method="post">
                         <input type="hidden" name="watchedEntToDelete" value="<%=element.name%>">
                         <input type="hidden" name="index" value="<%=watchedList.indexOf(element)%>">
                         <button class="delete-watched-ent-btn" type="submit">Delete</button>

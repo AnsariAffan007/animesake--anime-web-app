@@ -43,7 +43,8 @@
                 AnimeSake
             </h1>
             <li class="d-inline d-lg-none ms-auto nav-item search-section-toggler">
-                <a class="nav-link" data-search-section-active="false" style="display: flex;align-items: center;" href="#">
+                <a class="nav-link" data-search-section-active="false" style="display: flex;align-items: center;"
+                    href="#">
                     <i class="fa-solid fa-search"></i>
                 </a>
             </li>
@@ -95,8 +96,8 @@
                         </div>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/watchlist">Your Watchlist</a></li>
-                            <li><a class="dropdown-item" href="/watchedList">Your Watch History</a></li>
+                            <li><a class="dropdown-item" href="/user/watchlist">Your Watchlist</a></li>
+                            <li><a class="dropdown-item" href="/user/watchedList">Your Watch History</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -111,15 +112,14 @@
                 </div>
             </div>
             <div class="search-section" data-section-active="false">
-                <form class="search-form" action="/" method="post" onsubmit="return validateForm()">
+                <form class="search-form" method="get" onsubmit="return validateForm()">
                     <div class="search-box-padder">
                         <div class="search-box">
                             <div class="input-box">
-                                <input class="form-control me-2 nav-search" autocomplete="off" name="search"
+                                <input class="form-control me-2 nav-search" autocomplete="off"
                                     placeholder="Type to Search..." required>
                                 <button class="search-btn" type="submit"><i class="fas fa-search"></i></button>
                             </div>
-                            <input type="hidden" class="mal_id" name="mal_id" value="">
                             <div class="autocom-box">
 
                             </div>

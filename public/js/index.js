@@ -25,8 +25,7 @@ async function fetchTopAnimes() {
         $(".wrapper-top-animes").append(
             `<div class="swiper-slide">
                 <div class="clickThisDiv">
-                    <form class="recommended-ent" action="/" method="post">
-                        <input type="hidden" class="hiddenSearchName" name="mal_id" value="${object.mal_id}">
+                    <form class="recommended-ent" action="/anime/${object.mal_id}" method="get">
                         <a type="submit"><img class="popular-anime" src="${object.images.jpg.image_url}" alt="aot-img"></a>
                     </form>
                     <div class="ent-about">
@@ -51,8 +50,7 @@ async function fetchOngoingAnimes() {
         $(".wrapper-ongoing-animes").append(
             `<div class="swiper-slide">
                 <div class="clickThisDiv">
-                    <form class="recommended-ent" action="/" method="post">
-                        <input type="hidden" class="hiddenSearchName" name="mal_id" value="${object.mal_id}">
+                    <form class="recommended-ent" action="/anime/${object.mal_id}" method="get">
                         <a type="submit"><img class="popular-anime" src="${object.images.jpg.image_url}" alt="aot-img"></a>
                     </form>
                     <div class="ent-about">
@@ -77,8 +75,7 @@ async function fetchUpcomingAnimes() {
         $(".wrapper-upcoming-animes").append(
             `<div class="swiper-slide">
                 <div class="clickThisDiv">
-                    <form class="recommended-ent" action="/" method="post">
-                        <input type="hidden" class="hiddenSearchName" name="mal_id" value="${object.mal_id}">
+                    <form class="recommended-ent" action="/anime/${object.mal_id}" method="get">
                         <a type="submit"><img class="popular-anime" src="${object.images.jpg.image_url}" alt="aot-img"></a>
                     </form>
                     <div class="ent-about">
@@ -101,8 +98,7 @@ async function fetchReviewedAnimes() {
         $(".wrapper-reviewed-animes").append(
             `<div class="swiper-slide">
                 <div class="clickThisDiv">
-                    <form class="recommended-ent" action="/" method="post">
-                        <input type="hidden" class="hiddenSearchName" name="mal_id" value="${object.entertainmentId}">
+                    <form class="recommended-ent" action="/anime/${object.entertainmentId}" method="get">
                         <a type="submit"><img class="popular-anime" src="${object.imageUrl}" alt="img"></a>
                     </form>
                     <div class="ent-about">

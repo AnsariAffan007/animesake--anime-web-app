@@ -3,7 +3,7 @@
 <div class="full-in-flex">
     <div class="add-to-watchlist">
         <% if(!existsInWatchlist) { %>
-        <form class="hidden-data-form" action="/watchlist" method="post">
+        <form class="hidden-data-form" action="/user/watchlist" method="post">
             <input class="poster-hidden" type="hidden" name="poster" value="<%=poster%>">
             <input class="name-hidden" type="hidden" name="name" value="<%=englishTitle%>">
             <input class="mal-id-hidden" type="hidden" name="mal_id" value="<%=malId%>">
@@ -89,7 +89,7 @@
             <!-- 500 charecters limit -->
             <p class="review-desc"><%=element.reviewDesc%></p>
             <% if(element.username===username) { %>
-            <form class="delete-review-form" action="/delete-review" method="post">
+            <form class="delete-review-form" action="/user/delete-review" method="post">
                 <input type="hidden" name="entId" value="<%=malId%>">
                 <a class="delete-review" href="">Delete</a>
             </form>
@@ -101,7 +101,7 @@
         <% } %>
 
         <h3 class="new-review">Add a Review : </h3>
-        <form action="/add-review" method="post" class="new-review-form" onsubmit="return validateReview()">
+        <form action="/user/add-review" method="post" class="new-review-form" onsubmit="return validateReview()">
             <input class="nameForReview" type="hidden" name="entId" value="<%=malId%>">
             <input type="hidden" name="entName" value="<%=title%>">
             <input type="hidden" name="imageUrl" value="<%=poster%>">
@@ -138,7 +138,7 @@
     </div>
 </div>
 
-<script src="js/searchedEnt.js"></script>
+<script src="/js/searchedEnt.js"></script>
 
 <%- include('footer'); -%>
 

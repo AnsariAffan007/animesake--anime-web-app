@@ -55,6 +55,7 @@ $("#toggle-watch-order-btn").on('click', async () => {
     })
 })
 
+// click on animes listed in watch order
 $(".watch-order").on('click', ".watch-order-item", function () {
     // updateLocalStorage();
     $(this).find(".search-watch-order-ent").submit();
