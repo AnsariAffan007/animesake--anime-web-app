@@ -59,7 +59,6 @@ $('.nav-search').keyup(function (e) {
 });
 
 function select(element) {
-    console.log("hey");
     $(".search-form").removeAttr("onsubmit");
     $(".search-form").attr("action", "/anime/" + element.value);
     $(".search-form").submit();
