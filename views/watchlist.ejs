@@ -10,9 +10,7 @@
 
             <% watchlist.forEach(function(element) { %>
                 <div class="col-lg-2 col-md-3 col-sm-6 clickThisDiv">
-                    <form class="recommended-ent" action="/entertainments" method="post">
-                        <input type="hidden" class="hiddenSearchName" name="mal_id" value="<%=element.mal_id%>">
-                        <input type="hidden" class="" name="search" value="<%=element.name%>">
+                    <form class="recommended-ent" action=<%="/anime/"+element.mal_id%> method="get">
                         <img class="popular-anime" src="<%=element.poster%>" alt="aot-img">
                         <div class="ent-about">
                             <p class="pop-ent-desc">
@@ -21,7 +19,7 @@
                         </div>
                     </form>
                     <div class="delete-ent">
-                        <form class="delete-ent-form" action="/delete-watchlist-ent" method="post">
+                        <form class="delete-ent-form" action="/user/delete-watchlist-ent" method="post">
                             <input class="ent-to-delete-name" type="hidden" name="deleteEntName"
                                 value="<%=element.name%>">
                             <button type="submit" class="delete-btn">Delete</button>
