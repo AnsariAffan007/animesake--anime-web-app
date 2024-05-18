@@ -38,7 +38,7 @@ $('.nav-search').keyup(function (e) {
     if ($(".autocom-box").find(".load-div").length !== 1) {
         $(".autocom-box").append(
             `<div class="load-div" style="display: flex;justify-content: center;">
-                <img style="width: 20%;" src="images/loader.gif" alt="">
+                <img style="width: 20%;" src="/images/loader.gif" alt="">
             </div>`
         )
     };

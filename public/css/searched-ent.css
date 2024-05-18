@@ -153,6 +153,11 @@ p {
     color: white;
 }
 
+.watch-order-more-info {
+    display: flex;
+    gap: 0 4px;
+}
+
 .similar-ents-btn-div {
     margin: 3% 2%;
 }

@@ -18,6 +18,9 @@ const reviewRouter = require("./routes/User/Review")
 const User = require("./models/User");
 const Anime = require("./models/Anime");
 
+// Data
+const idMap = require("./data/animes-minified.json");
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -59,16 +62,35 @@ app.get("/reviewed", async (req, res) => {
 
 // Watch order. Chiaki API has been Deprecated!
 app.get("/watchOrder", function (req, res) {
-    let watchOrderData = "";
-    https.get("https://chiaki.vercel.app/get?group_id=" + req.query.id, function (response) {
-        response.on("data", (data) => {
-            watchOrderData = watchOrderData + data;
-        })
-        response.on('end', () => {
-            watchOrderData = JSON.parse(watchOrderData);
-            res.send({ watchOrderData: watchOrderData });
-        })
+
+    let groupId = idMap[req.query.id].groupId;
+    let malIdGroup = Object.keys(idMap).filter(key => idMap[key].groupId === groupId);
+    let groupAnimes = [];
+    for (malId of malIdGroup) {
+        idMap[malId]['mal_id'] = malId;
+        groupAnimes.push(idMap[malId]);
+    }
+    groupAnimes = groupAnimes.map(anime => {
+        anime.startData = new Date(anime.startDate)
+        anime.endData = new Date(anime.endDate)
+        return anime;
     })
+    groupAnimes.sort((a, b) => {
+        if (a.startDate < b.startDate) return -1;
+        else if (a.startDate < b.startDate) return 1;
+    })
+    res.send({ watchOrderData: groupAnimes });
+
+    // let watchOrderData = "";
+    // https.get("https://chiaki.vercel.app/get?group_id=" + req.query.id, function (response) {
+    //     response.on("data", (data) => {
+    //         watchOrderData = watchOrderData + data;
+    //     })
+    //     response.on('end', () => {
+    //         watchOrderData = JSON.parse(watchOrderData);
+    //         res.send({ watchOrderData: watchOrderData });
+    //     })
+    // })
 })
 
 // Advanced search page

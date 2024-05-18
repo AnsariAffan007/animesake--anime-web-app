@@ -38,6 +38,7 @@ $(".delete-review").on('click', function (e) {
     $(".delete-review-form").submit();
 })
 
+const month = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 $("#toggle-watch-order-btn").on('click', async () => {
     let malId = $(".mal-id-hidden").val();
     let watchOrder = await fetch("/watchOrder?id=" + malId);
@@ -45,11 +46,17 @@ $("#toggle-watch-order-btn").on('click', async () => {
     parsedOrder.watchOrderData.forEach((element) => {
         $(".watch-order").append(`
             <div class="watch-order-item">
-                <div class="item-name">${element.name}</div>
-                <div class="item-info">${element.info}</div>
-                <form action="/" method="post" class="search-watch-order-ent">
-                    <input type="hidden" name="mal_id" value="${new URL(element.url).pathname.split('/')[2]}">
-                </form>
+                <div class="item-name">${element.title}</div>
+                <div class="watch-order-more-info">
+                    <div class="item-info">${month[new Date(element.startDate).getMonth()]} </div>
+                    <div class="item-info">${new Date(element.startDate).getDate()},</div>
+                    <div class="item-info">${new Date(element.startDate).getFullYear()} | </div>
+                    <div class="item-info">${element.type} | </div>
+                    <div class="item-info">${element.episodes + " Episodes"} x </div>
+                    <div class="item-info">${element.duration} | </div>
+                    <div class="item-info">${element.rating}</div>
+                </div>
+                <form action=${'/anime/' + element.mal_id} method="get" class="search-watch-order-ent"></form>
             </div>
         `)
     })
