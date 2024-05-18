@@ -38,8 +38,11 @@ $(".delete-review").on('click', function (e) {
     $(".delete-review-form").submit();
 })
 
+let watchOrderFetched = false;
 const month = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
 $("#toggle-watch-order-btn").on('click', async () => {
+    if (watchOrderFetched) return;
+    watchOrderFetched = true;
     let malId = $(".mal-id-hidden").val();
     let watchOrder = await fetch("/watchOrder?id=" + malId);
     let parsedOrder = await watchOrder.json();
