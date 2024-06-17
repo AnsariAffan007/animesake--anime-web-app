@@ -64,22 +64,25 @@ app.get("/reviewed", async (req, res) => {
 app.get("/watchOrder", function (req, res) {
 
     let groupId = idMap[req.query.id].groupId;
-    let malIdGroup = Object.keys(idMap).filter(key => idMap[key].groupId === groupId);
-    let groupAnimes = [];
-    for (malId of malIdGroup) {
-        idMap[malId]['mal_id'] = malId;
-        groupAnimes.push(idMap[malId]);
+    if (!groupId) res.send({ watchOrderData: [] });
+    else {
+        let malIdGroup = Object.keys(idMap).filter(key => idMap[key].groupId === groupId);
+        let groupAnimes = [];
+        for (malId of malIdGroup) {
+            idMap[malId]['mal_id'] = malId;
+            groupAnimes.push(idMap[malId]);
+        }
+        groupAnimes = groupAnimes.map(anime => {
+            anime.startData = new Date(anime.startDate)
+            anime.endData = new Date(anime.endDate)
+            return anime;
+        })
+        groupAnimes.sort((a, b) => {
+            if (a.startDate < b.startDate) return -1;
+            else if (a.startDate < b.startDate) return 1;
+        })
+        res.send({ watchOrderData: groupAnimes });
     }
-    groupAnimes = groupAnimes.map(anime => {
-        anime.startData = new Date(anime.startDate)
-        anime.endData = new Date(anime.endDate)
-        return anime;
-    })
-    groupAnimes.sort((a, b) => {
-        if (a.startDate < b.startDate) return -1;
-        else if (a.startDate < b.startDate) return 1;
-    })
-    res.send({ watchOrderData: groupAnimes });
 
     // let watchOrderData = "";
     // https.get("https://chiaki.vercel.app/get?group_id=" + req.query.id, function (response) {

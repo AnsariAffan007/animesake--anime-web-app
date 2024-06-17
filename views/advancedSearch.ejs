@@ -7,8 +7,6 @@
     </a>
 </div>
 
-
-
 <hr class="separation">
 
 <div class="offcanvas offcanvas-end text-bg-dark filter-offcanvas show" tabindex="-1" id="offcanvasExample"
@@ -81,6 +79,36 @@
     </div>
 </div>
 
+<div id="error-container">
+    <div id="error-accordion" class="accordion">
+        <div class="accordion-item">
+            <h4 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <span>Invalid Filters</span>
+                    <i style="color: red;" class="fa-solid fa-circle-exclamation"></i>
+                </button>
+            </h4>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <span style="color: rgb(255, 255, 255);">Trying to manually apply filters through URL?</span>
+                    <span>Here are some rules that should be followed: </span>
+                    <ul style="margin: 15px 0 10px 15px;">
+                        <li>The Year and Season filters are ONE set of filters</li>
+                        <li>The remaining filters, called "Advanced Filters", are a different set of filters</li>
+                        <li>These two sets should be used differently.</li>
+                        <li>If they are used together, the year/season filter will NOT take effect</li>
+                        <li>In Advanced filters, the "name" filter, and the "Latest" and "Oldest" values in "sort by"
+                            filter don't work together</li>
+                        <li>If the "name" and "latest/oldest" value filter is used together, the "latest/oldest" filter
+                            will NOT work</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="all-entees">
     <div class="popular-ents row">
         <!-- <div class="col-lg-2 col-md-3 col-sm-6 clickThisDiv">
@@ -95,17 +123,30 @@
     </div>
 </div>
 
-<div class="loader">
-    <img src="images/loader.gif" alt="">
+<div class="parent-pagination-container" style="margin: 7% 0;height: 70px;display: grid;place-items: center;">
+    <div class="pagination-container">
+        <button class="pagination-button pagination-previous"><i class="fa-solid fa-angle-left"></i></button>
+        <div class="page-numbers-container">
+            <!-- <button class="pagination-button">1</button>
+            <button class="pagination-button">2</button>
+            <button class="pagination-button active-page-button">3</button>
+            <span class="pagination-button">...</span>
+            <button class="pagination-button">1002</button>
+            <button class="pagination-button">1003</button> -->
+        </div>
+        <button class="pagination-button pagination-next"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
+    <div class="loader">
+        <img src="/images/loader.gif" alt="">
+    </div>
+    <div class="end hide-end">
+        <p>No animes found for applied filters</p>
+    </div>
 </div>
 
-<div class="load-more" style="text-align: center;margin-bottom: 7%;">
+<!-- <div class="load-more" style="text-align: center;margin-bottom: 7%;">
     <button class="load-more-btn" onclick="loadMore()">Load More</button>
-</div>
-
-<div class="end">
-    <p>You've reached the end of page.</p>
-</div>
+</div> -->
 
 <script>
     $(".search-form").removeClass("d-flex");

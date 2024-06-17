@@ -1,26 +1,7 @@
-$(document).ready(function () {
-    // // Retrieve the stored HTML content from local storage
-    // var storedContent = localStorage.getItem('myDivContent');
-    // console.log(storedContent);
-    // if (storedContent) {
-    //     // Set the stored HTML content to the div element
-    //     var divElement = $('.popular-ents');
-    //     divElement.html(storedContent);
-    // }
-});
-// localStorage.setItem('initialURL', window.location.href);
-// // Listen for the popstate event
-// $(window).on('popstate', function () {
-//     // Check if the current URL is different from the initial URL
-//     if (window.location.href !== localStorage.getItem('initialURL')) {
-//         // Clear the local storage
-//         localStorage.removeItem('myDivContent');
-//     }
-// });
+resetFilters();
 
+// Fetching genres and populating them in sidebar
 fetchGenres();
-$(".load-more").addClass("hide-btn");
-$(".end").toggleClass("hide-end");
 async function fetchGenres() {
     const url = "https://api.jikan.moe/v4/genres/anime"
     const data = await fetch(url);
@@ -38,7 +19,7 @@ async function fetchGenres() {
     })
 }
 
-
+// submitting get request for a clicked anime
 $(".popular-ents").on('click', '.clickThisDiv', function () {
     // updateLocalStorage();
     $(this).find(".recommended-ent").submit();
@@ -48,40 +29,57 @@ let advancedFilterApplied = false;
 
 let year = "";
 let season = "";
-// Populating year dropdown
+
+// Populating year dropdown in descending order (newest to oldest year)
 let earliestYear = 1917;
 let currentYear = new Date().getFullYear();
-while (earliestYear <= currentYear) {
-    $("#year-select").append(`<option value="${earliestYear}">${earliestYear}</option>`)
-    earliestYear += 1;
+while (currentYear >= earliestYear) {
+    $("#year-select").append(`<option value="${currentYear}">${currentYear}</option>`)
+    currentYear -= 1;
 }
 
 let url = "";
 let page = 1;
 
+// Checking if url has filters, if yes fetch 'em
+$(window).on('load', function () {
+    let { isFilterPresent, isFilterError, urlToFetch, pageInUrl } = getUrlFromParams();
+    isFilterPresent && setTimeout(() => $(".btn-close").trigger('click'), 500);
+    isFilterPresent && loadFilteredAnimes(urlToFetch, pageInUrl, isFilterError);
+});
+
+// Setting value of year on dropdown change
 $('#year-select').on('change', function () {
     if (!this.value) year = "";
     else year = this.value;
 });
+
 
 $('#season-select').on('change', function () {
     if (!this.value) season = "";
     else season = this.value;
 });
 
-
+// SUBMIT YEAR SEASON FILTERS
 $(".year-season-btn").on('click', (e) => {
     e.preventDefault();
     if (year === "" || season === "") {
         alert("Please select year and season");
         return;
     }
-    $(".btn-close").trigger("click");
+
     advancedFilterApplied = false;
+
     url = "https://api.jikan.moe/v4/seasons/" + year + "/" + season + "";
-    page = 1;
+
+    let page = 1;
+
+    // Pushing url with filters into history
+    history.pushState(null, null, `?year=${year}&season=${season}&page=${page}`)
+
     $(".popular-ents").html("");
-    loadFilteredAnimes(url);
+
+    loadFilteredAnimes(url, page, false);
 })
 
 let searchName = "";
@@ -144,10 +142,11 @@ $(document).on('click', '.genre-checkbox', function () {
     }
 });
 
+// SUBMITTING ADVANCED FILTER FORM
 $(".seach-filtered-animes").on('click', (e) => {
     e.preventDefault();
     advancedFilterApplied = true;
-    $(".btn-close").trigger("click");
+
     url = "https://api.jikan.moe/v4/anime?q=";
     if (searchName) {
         url = url + searchName
@@ -171,25 +170,135 @@ $(".seach-filtered-animes").on('click', (e) => {
     }
     page = 1;
     $(".popular-ents").html("");
-    loadFilteredAnimes(url);
+
+    // Adding filters as params in history
+    setAdvancedFilterParams(url, page);
+
+    loadFilteredAnimes(url, page, false);
 })
 
-function loadMore() {
-    page += 1;
-    loadFilteredAnimes(url);
+// Previous and next buttons for pagination
+let previousButton = $(".pagination-previous");
+let nextButton = $(".pagination-next");
+
+// If previous or next buttons are clicked
+previousButton.click(function () {
+    let page = getCurrentPage() - 1;
+    setPageParam(page);
+    let { isFilterError } = getUrlFromParams();
+    loadFilteredAnimes(url, page, isFilterError);
+})
+
+nextButton.click(function () {
+    let page = getCurrentPage() + 1;
+    setPageParam(page);
+    let { isFilterError } = getUrlFromParams();
+    loadFilteredAnimes(url, page, isFilterError);
+})
+
+// if a button of pagination is clicked (except previous and next)
+function paginationButtonClick(e) {
+    let page = parseInt(e.innerText);
+    setPageParam(page);
+    let { isFilterError } = getUrlFromParams();
+    loadFilteredAnimes(url, page, isFilterError);
 }
 
-async function loadFilteredAnimes(url) {
-    $(".loader").addClass("show-loader");
+// popstate event listener to check if user has clicked back or forward.
+window.addEventListener("popstate", function (e) {
+    let { isFilterPresent, isFilterError, urlToFetch, pageInUrl } = getUrlFromParams();
+    if (isFilterPresent) loadFilteredAnimes(urlToFetch, pageInUrl, isFilterError);
+    else resetFilters()
+})
+
+// Set "page" parameter in url, as well as add in history
+function setPageParam(page) {
+    let url = window.location.href
+    let urlObj = new URL(url);
+    let urlParams = urlObj.searchParams
+    urlParams.set("page", `${page}`);
+    history.pushState(null, null, `?${urlParams.toString()}`)
+}
+
+// set advanced filters in url params, as well as add in history
+function setAdvancedFilterParams(reqURL, page) {
+    let urlObj = new URL(`${reqURL}`);
+    let reqUrlParams = urlObj.searchParams.toString();
+    history.pushState(null, null, `${window.location.pathname}?${reqUrlParams}&page=${page}`)
+}
+
+function getUrlFromParams() {
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+
+    // getting page param's value from page param, and then deleting the param
+    let page = parseInt(urlParams.get("page")) || 1;
+    urlParams.delete("page");
+
+    // Finding out if url contains advanced filters, or it is just a year season filter
+    let isAdvancedFilterURL =
+        urlParams.has("q") || urlParams.has("type") || urlParams.has("rating") || urlParams.has("genres") || urlParams.has("order_by") || urlParams.has("sort");
+    let isYearSeasonFilter = urlParams.has("year") || urlParams.has("season");
+
+    // Checking if there's some error in filters, while applying filters manually through URL
+    // error comes when both sets of filters are used together, or when name and sort by latest or oldest is used together
+    let filterError =
+        (isAdvancedFilterURL && isYearSeasonFilter)
+        ||
+        (urlParams.get("q")?.length > 0 && urlParams.get("sort") === "asc")
+        ||
+        (urlParams.get("q")?.length > 0 && urlParams.get("sort") === "desc")
+
+    // setting url based on what set of filters are being used
+    let advancedFilterUrl = "https://api.jikan.moe/v4/anime?";
+    let yearSeasonFilterUrl = "https://api.jikan.moe/v4/seasons/";
+
+    if (isAdvancedFilterURL) url = advancedFilterUrl + urlParams.toString();
+    else if (isYearSeasonFilter) url = yearSeasonFilterUrl + urlParams.get("year") + "/" + urlParams.get("season");
+
+    advancedFilterApplied = isAdvancedFilterURL;
+
+    return {
+        isFilterPresent: isAdvancedFilterURL || isYearSeasonFilter,
+        isFilterError: filterError,
+        urlToFetch: url,
+        pageInUrl: page
+    };
+}
+
+// fetch filtered animes, and update content on UI
+async function loadFilteredAnimes(url, page, isFilterError) {
+
+    // If filters contain error, show the error container with rules for setting filters.
+    if (isFilterError) $("#error-container").show();
+    else $("#error-container").hide();
+
+    // Empty animes
+    $(".popular-ents").html('');
+
+    // Close sidebar
+    $(".btn-close").trigger("click");
+
+    // Show pagination container
+    $(".parent-pagination-container").show();
+
+    // Show loader
+    showSpinner();
+
     if (advancedFilterApplied) url = url + "&page=" + page;
     else url = url + "?page=" + page;
-    console.log(url);
-    let data = await fetch(url + "&page=" + page);
+
+    let data = await fetch(url);
     let parsedData = await data.json();
-    $(".loader").removeClass("show-loader");
+
+    // Hide loader
+    hideSpinner();
+
     if (page === 1) $(".results-found")[0].innerHTML = `${parsedData.pagination.items.total} Results Found`;
+
+    let recievedAnimes = '';
     parsedData.data.forEach((object, index) => {
-        $(".popular-ents").append(
+        recievedAnimes +=
             `<div class="col-lg-2 col-md-3 col-sm-6 clickThisDiv">
                 <form class="recommended-ent" action="/anime/${object.mal_id}" method="get">
                     <img class="popular-anime" src="${object.images.jpg.image_url}" alt="aot-img">
@@ -198,16 +307,90 @@ async function loadFilteredAnimes(url) {
                     </div>
                 </form>
             </div>`
-        )
     });
-    if (!parsedData.pagination.has_next_page) {
-        $(".load-more").addClass("hide-btn");
-        $(".end").removeClass("hide-end");
-        return;
-    }
-    else {
-        $(".load-more").removeClass("hide-btn");
-        $(".end").addClass("hide-end");
-    }
+    $(".popular-ents").html(recievedAnimes);
+
+    // Updating page numbers in pagination, and updating previous and next buttons
+    updatePagination(page, parsedData.pagination.last_visible_page)
+    updatePageNavigators(page, parsedData.pagination.last_visible_page)
 };
 
+// Update the page numbers that are shown in the pagination bar
+let pageNumbersContainer = $(".page-numbers-container");
+function updatePagination(activePage, totalPages) {
+    let startNumber =
+        activePage === totalPages || activePage === totalPages - 1 ?
+            1 :
+            activePage === totalPages - 2 ?
+                activePage - 2 : activePage;
+
+    let midEndNumber = totalPages === 1 ? 1 : startNumber + 2;
+
+    let midStart = (totalPages - 1 === midEndNumber) ?
+        totalPages : (totalPages - 1 < midEndNumber) ?
+            0 : totalPages - 1;
+
+    let endNumber = startNumber === midEndNumber ? -1 : totalPages;
+
+    let startGroup = '';
+    let endGroup = '';
+    for (let i = startNumber; i <= midEndNumber; i++) {
+        startGroup += `
+        <button class="pagination-button number-button ${i === activePage && "active-page-button"}" onclick="paginationButtonClick(this)">
+            ${i}
+        </button>`
+    }
+    for (let i = midStart; i <= endNumber; i++) {
+        endGroup += `
+        <button class="pagination-button number-button ${i === activePage && "active-page-button"}" onclick="paginationButtonClick(this)">
+            ${i}
+        </button>`
+    }
+    pageNumbersContainer.html(startGroup);
+    (midStart - midEndNumber > 1) && pageNumbersContainer.append('<span class="pagination-button">...</span>');
+    pageNumbersContainer.append(endGroup);
+
+    // 3 buttons logic (Future scope)
+}
+
+// Check if previous and next buttons have to disabled or not, and do so
+function updatePageNavigators(activePage, lastPage) {
+    if (activePage === 1) previousButton.prop("disabled", true);
+    else previousButton.prop("disabled", false);
+
+    if (activePage === lastPage) nextButton.prop("disabled", true);
+    else nextButton.prop("disabled", false);
+}
+
+// Function to get current page from URL Params
+function getCurrentPage() {
+    let url = window.location.href;
+    let urlObj = new URL(url);
+    let currentPage = urlObj.searchParams.get("page");
+    return currentPage ? parseInt(currentPage) : 1;
+}
+
+// Toggle .loader div which contains a loading gif. 
+// Also hide pagination container to prevent user from clicking on other pages while one page is being loaded
+function showSpinner() {
+    $(".pagination-container").addClass("hide-btn");
+    $(".loader").addClass("show-loader");
+}
+
+function hideSpinner() {
+    $(".pagination-container").removeClass("hide-btn");
+    $(".loader").removeClass("show-loader");
+}
+
+function resetFilters() {
+    // Empty animes
+    $(".popular-ents").html('');
+    // Hiding pagination container first
+    $(".parent-pagination-container").hide();
+    // Hide error container
+    $("#error-container").hide();
+    // Reset heading
+    $(".results-found")[0].innerHTML = "Apply Filters"
+    // Open filter sidebar
+    $(".offcanvas-toggler").trigger("click");
+}

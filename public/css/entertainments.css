@@ -9,7 +9,6 @@
 
 .loader {
     text-align: center;
-    margin: 7% 0;
     display: none;
 }
 
@@ -18,7 +17,7 @@
 }
 
 .loader > img {
-    width: 100px;
+    height: 70px;
 }
 
 .load-more {
@@ -30,12 +29,40 @@
     padding: 5px;
 }
 
+/* Pagination styling */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.pagination-button {
+    padding: 0.4rem 0.7rem;
+    background-color: rgb(220, 220, 220);
+    border: 1px solid rgb(180, 180, 180);
+}
+
+.page-numbers-container {
+    display: flex;
+    justify-content: center;
+}
+
+.active-page-button {
+    background-color: rgb(180, 180, 180);
+}
+
+@media (max-width: 576px) {
+    .pagination-button {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+    }
+}
+
 .hide-btn {
     display: none;
 }
 
 .end {
-    margin: 7% 15%;
     color: white;
     text-align: center;
 }

@@ -46,6 +46,8 @@ $("#toggle-watch-order-btn").on('click', async () => {
     let malId = $(".mal-id-hidden").val();
     let watchOrder = await fetch("/watchOrder?id=" + malId);
     let parsedOrder = await watchOrder.json();
+    if (parsedOrder.watchOrderData.length === 0) return $(".no-order-error-msg").css("display", "block");
+    $(".no-order-error-msg").css("display", "none");
     parsedOrder.watchOrderData.forEach((element) => {
         $(".watch-order").append(`
             <div class="watch-order-item">

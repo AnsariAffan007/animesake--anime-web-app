@@ -28,21 +28,32 @@
     </div>
 </div>
 
-<div class="loader">
-    <img src="/images/loader.gif" alt="">
-</div>
-
-<div class="load-more" style="text-align: center;margin-bottom: 7%;">
+<!-- <div class="load-more" style="text-align: center;">
     <button class="load-more-btn" onclick="loadMore()">Load More</button>
+</div> -->
+
+<div class="parent-pagination-container" style="margin: 7% 0;height: 70px;display: grid;place-items: center;">
+    <div class="pagination-container">
+        <button class="pagination-button pagination-previous"><i class="fa-solid fa-angle-left"></i></button>
+        <div class="page-numbers-container">
+            <!-- <button class="pagination-button">1</button>
+            <button class="pagination-button">2</button>
+            <button class="pagination-button active-page-button">3</button>
+            <span class="pagination-button">...</span>
+            <button class="pagination-button">1002</button>
+            <button class="pagination-button">1003</button> -->
+        </div>
+        <button class="pagination-button pagination-next"><i class="fa-solid fa-angle-right"></i></button>
+    </div>
+    <div class="loader">
+        <img src="/images/loader.gif" alt="">
+    </div>
+    <div class="end hide-end">
+        <p>No Similar Animes Found!</p>
+    </div>
 </div>
 
-<div class="end hide-end">
-    <p>You've reached the end of page.</p>
-</div>
 
 <script src="/js/animeDisplayer.js"></script>
-
-
-<hr class="separation">
 
 <%- include('footer'); -%>

@@ -130,3 +130,44 @@ select>option {
 .all-entees {
     margin-top: 4%;
 }
+
+/* Error container */
+#error-container {
+    margin: 3% 15% 1%;
+    color: rgb(217, 217, 217);
+}
+
+#error-container .accordion {
+    --bs-accordion-bg: rgb(64, 64, 64);
+    --bs-accordion-color: white;
+}
+
+#error-container .accordion-button {
+    color: rgb(255, 255, 255);
+    background-color: rgb(64, 64, 64);
+    box-shadow: none;
+    display: flex;
+    gap: 0 5px;
+    align-items: center;
+}
+
+#error-container .accordion-button[aria-expanded=true] {
+    border-bottom: 1px solid rgb(140, 140, 140);
+}
+
+#error-container .accordion-button:focus {
+    box-shadow: none;
+}
+
+#error-container .accordion-button:not(.collapsed)::after {
+    background-image: var(--bs-accordion-btn-icon);
+}
+
+#error-container .accordion .accordion-item {
+    border: 1px solid rgb(140, 140, 140);
+    color: rgb(200, 200, 200);
+}
+
+#error-container .accordion-body ul li:not(:last-child) {
+    margin-bottom: 5px;
+}
