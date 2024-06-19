@@ -43,7 +43,8 @@ else if (window.location.pathname.indexOf("/similar/") !== -1) {
     $(".pagination-container").hide();
     type = "similar";
     id = window.location.pathname.split("/")[2];
-    url = `https://api.jikan.moe/v4/anime/${id}/recommendations?page=`;
+    let page = "";
+    url = `https://api.jikan.moe/v4/anime/${id}/recommendations`;
     loadAnimes(url, page);
 };
 
